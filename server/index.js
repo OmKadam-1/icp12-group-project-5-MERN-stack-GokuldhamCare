@@ -5,6 +5,7 @@ import connectDB from "./db.js";
 import User from "./models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { postAppointment } from "./controllers/appointment.js";
 
 dotenv.config();
 
@@ -99,6 +100,10 @@ app.post("/api/auth/login", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// api for booking appointment
+app.post("/api/appointment/book", postAppointment);
+
 
 
 app.listen(PORT, () => {
