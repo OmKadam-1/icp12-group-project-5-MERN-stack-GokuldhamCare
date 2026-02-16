@@ -5,7 +5,7 @@ import connectDB from "./db.js";
 import User from "./models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { postAppointment , getPatientAppointments } from "./controllers/appointment.js";
+import { postAppointment, getPatientAppointments, getDoctorAppointments, approveAppointment, rejectAppointment } from "./controllers/appointment.js";
 
 dotenv.config();
 
@@ -105,6 +105,12 @@ app.post("/api/auth/login", async (req, res) => {
 app.post("/api/appointment/book", postAppointment);
 // api for fetching appointments for a patient
 app.get("/api/appointment/patient/:patientId", getPatientAppointments);
+// api for fetching appointments for a doctor
+app.get("/api/appointment/doctor/:doctorId", getDoctorAppointments);
+// api for approving an appointment
+app.put("/api/appointment/approve/:id", approveAppointment);
+// api for rejecting an appointment
+app.put("/api/appointment/reject/:id", rejectAppointment);
 
 
 
