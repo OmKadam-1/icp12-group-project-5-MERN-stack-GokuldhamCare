@@ -4,31 +4,34 @@ dotenv.config();
 
 // Controller for handling appointment-related operations
 const postAppointment = async (req, res) => {
-    const { patientName, patientId, doctorId, problem } = req.body;
+  const { patientName, patientId, doctorId, email, phone, problem, address } = req.body;
 
-    const newAppointment = new Appointment({
-        patientName,
-        patientId,
-        doctorId,
-        problem,
-        status: "pending",
+  const newAppointment = new Appointment({
+    patientName,
+    patientId,
+    doctorId,
+    email,
+    phone,
+    problem,
+    address,
+    status: "pending",
+  });
+
+  try {
+    const savedAppointment = await newAppointment.save();
+
+    return res.json({
+      success: true,
+      message: "Appointment requested successfully",
+      data: savedAppointment,
     });
-
-    try {
-        const savedAppointment = await newAppointment.save();
-
-        return res.json({
-            success: true,
-            message: "Appointment requested successfully",
-            data: savedAppointment,
-        });
-    } catch (error) {
-        return res.json({
-            success: false,
-            message: `Appointment request failed: ${error.message}`,
-            data: null,
-        });
-    }
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: `Appointment request failed: ${error.message}`,
+      data: null,
+    });
+  }
 };
 
 // Controller to fetch appointments for a specific patient
@@ -102,7 +105,7 @@ const approveAppointment = async (req, res) => {
   }
 };
 
- const rejectAppointment = async (req, res) => {
+const rejectAppointment = async (req, res) => {
   try {
     const updatedAppointment = await Appointment.findByIdAndUpdate(
       req.params.id,
@@ -126,4 +129,4 @@ const approveAppointment = async (req, res) => {
 
 
 
-export { postAppointment , getPatientAppointments , getDoctorAppointments , approveAppointment , rejectAppointment };
+export { postAppointment, getPatientAppointments, getDoctorAppointments, approveAppointment, rejectAppointment };

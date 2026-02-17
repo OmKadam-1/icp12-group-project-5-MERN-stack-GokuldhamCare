@@ -1,8 +1,9 @@
-function Input({ type, placeholder, value, onChange, onKeyDown, ref }) {
+function Input({ type, placeholder, name ,value, onChange, onKeyDown, ref }) {
   return (
     <input
       type={type}
       placeholder={placeholder}
+            name={name}         
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}

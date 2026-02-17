@@ -40,8 +40,6 @@ const createDoctor = async () => {
   }
 };
 
-
-
 app.get("/", (req, res) => {
   res.json({ message: "Welcome" });
 });
@@ -100,6 +98,8 @@ app.post("/api/auth/login", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+
 
 // api for booking appointment
 app.post("/api/appointment/book", postAppointment);

@@ -2,12 +2,16 @@ import { useState } from "react";
 import axios from "axios";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import toast, { Toaster } from "react-hot-toast";
+import NavbarPatient from "../../components/NavbarPatient";
 
 function BookAppointment() {
   const [form, setForm] = useState({
     patientName: "",
-    doctorId: "",
+    email: "",
+    phone: "",
     problem: "",
+    address: "",
   });
 
   const handleChange = (e) => {
@@ -17,58 +21,79 @@ function BookAppointment() {
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/appointment/book",
-        form
+        "http://localhost:8080/api/appointment/book",
+        form,
       );
 
       if (res.data.success) {
-        alert("Appointment Requested Successfully ✅");
+        toast.success("Appointment Requested Successfully ✅");
         setForm({ patientName: "", doctorId: "", problem: "" });
       } else {
-        alert("Failed to book appointment ❌");
+        toast.error("Failed to book appointment ❌");
       }
     } catch (error) {
       console.log(error);
-      alert("Server Error");
+      toast.error("Server Error");
     }
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white p-6 shadow-lg rounded-xl mt-10">
-      <h2 className="text-xl font-bold text-center mb-4">
-        🏥 Book Appointment
-      </h2>
+    <div className="bg-gray-100">
+      <NavbarPatient />
 
-      {/* Patient Name */}
-      <Input
-        type="text"
-        placeholder="Enter Patient Name"
-        name="patientName"
-        value={form.patientName}
-        onChange={handleChange}
-      />
+      <div className="max-w-xl mx-auto  p-6 shadow-lg rounded-xl mt-10 bg-gray-200">
+        <h2 className="text-xl font-bold text-center mb-4">
+          🏥 Book Appointment
+        </h2>
 
-      {/* Doctor ID */}
-      <Input
-        type="text"
-        placeholder="Enter Doctor ID"
-        name="doctorId"
-        value={form.doctorId}
-        onChange={handleChange}
-      />
+        <Input
+          type={"text"}
+          placeholder={"Enter Patient Name"}
+          name={"patientName"}
+          value={form.patientName}
+          onChange={handleChange}
+        />
 
-      {/* Problem */}
-      <textarea
-        name="problem"
-        placeholder="Describe your problem"
-        value={form.problem}
-        onChange={handleChange}
-        className="border border-gray-300 rounded px-2 py-1 mx-2 my-1 focus:outline-none focus:ring-2 focus:ring-blue-500 block w-full"
-      ></textarea>
+        <Input
+          type={"email"}
+          placeholder={"Enter Your Email"}
+          name={"email"}
+          value={form.email}
+          onChange={handleChange}
+        />
 
-      {/* Submit Button */}
-      <div className="text-center mt-4">
-        <Button title="Book Appointment" size="medium" variant="primary" onClick={handleSubmit} />
+        <Input
+          type={"text"}
+          placeholder={"Enter Your Phone Number"}
+          name={"phone"}
+          value={form.phone}
+          onChange={handleChange}
+        />
+
+        <Input
+          type={"textarea"}
+          placeholder={"Describe your problem"}
+          name={"problem"}
+          value={form.problem}
+          onChange={handleChange}
+        />
+
+        <Input
+          type={"text"}
+          placeholder={"Enter Your Address"}
+          name={"address"}
+          value={form.address}
+          onChange={handleChange}
+        />
+
+        <div className="text-center mt-4">
+          <Button
+            title="Book Appointment"
+            size="medium"
+            variant="primary"
+            onClick={handleSubmit}
+          />
+        </div>
       </div>
     </div>
   );

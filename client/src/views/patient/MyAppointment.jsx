@@ -10,7 +10,7 @@ function MyAppointment() {
   const fetchMyAppointments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/appointment/patient/${patientId}`
+        `http://localhost:8080/api/appointment/patient/${patientId}`
       );
 
       if (res.data.success) {

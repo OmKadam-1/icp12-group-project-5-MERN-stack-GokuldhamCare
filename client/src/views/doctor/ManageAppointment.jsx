@@ -12,7 +12,7 @@ function ManageAppointment() {
     const doctorId = "DOCTOR_ID_HERE"; // replace with logged-in doctor id
 
     const res = await axios.get(
-      `http://localhost:5000/api/appointment/doctor/${doctorId}`
+      `http://localhost:8080/api/appointment/doctor/${doctorId}`
     );
 
     if (res.data.success) {
