@@ -1,23 +1,27 @@
 import Appointment from "../models/Appointments.js";
+import User from "../models/User.js";
+
 import dotenv from "dotenv";
 dotenv.config();
 
-// Controller for handling appointment-related operations
 const postAppointment = async (req, res) => {
-  const { patientName, patientId, doctorId, email, phone, problem, address } = req.body;
-
-  const newAppointment = new Appointment({
-    patientName,
-    patientId,
-    doctorId,
-    email,
-    phone,
-    problem,
-    address,
-    status: "pending",
-  });
-
   try {
+    const doctor = await User.findOne({ role: "DOCTOR" });
+
+    if (!doctor)
+      return res.status(404).json({ message: "Doctor not found" });
+
+    const newAppointment = new Appointment({
+      patientName: req.body.patientName,
+      patientId: req.user.id,   // ✅ from JWT
+      doctorId: doctor._id,     
+      email: req.body.email,
+      phone: req.body.phone,
+      problem: req.body.problem,
+      address: req.body.address,
+      status: "pending",
+    });
+
     const savedAppointment = await newAppointment.save();
 
     return res.json({
@@ -25,57 +29,54 @@ const postAppointment = async (req, res) => {
       message: "Appointment requested successfully",
       data: savedAppointment,
     });
+
   } catch (error) {
-    return res.json({
+    return res.status(500).json({
       success: false,
-      message: `Appointment request failed: ${error.message}`,
-      data: null,
+      message: error.message,
     });
   }
 };
 
-// Controller to fetch appointments for a specific patient
 const getPatientAppointments = async (req, res) => {
   try {
     const appointments = await Appointment.find({
-      patientId: req.params.patientId,
-    });
+      patientId: req.user.id
+    }).populate("doctorId", "email");
 
     return res.json({
       success: true,
       message: "Patient appointments fetched successfully",
       data: appointments,
     });
+
   } catch (error) {
-    return res.json({
+    return res.status(500).json({
       success: false,
-      message: `Failed to fetch appointments: ${error.message}`,
-      data: null,
+      message: error.message,
     });
   }
 };
 
-
 const getDoctorAppointments = async (req, res) => {
   try {
     const appointments = await Appointment.find({
-      doctorId: req.params.doctorId,
-    });
+      doctorId: req.user.id
+    }).populate("patientId", "email");
 
     return res.json({
       success: true,
       message: "Doctor appointments fetched successfully",
       data: appointments,
     });
+
   } catch (error) {
-    return res.json({
+    return res.status(500).json({
       success: false,
-      message: `Failed to fetch doctor appointments: ${error.message}`,
-      data: null,
+      message: error.message,
     });
   }
 };
-
 
 const approveAppointment = async (req, res) => {
   const { appointmentDate, appointmentTime } = req.body;
