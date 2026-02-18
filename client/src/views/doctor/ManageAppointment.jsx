@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import NavbarPatient from "../../components/NavbarPatient";
 
 function ManageAppointment() {
   const [appointments, setAppointments] = useState([]);
@@ -9,10 +10,10 @@ function ManageAppointment() {
 
   // 🔹 Fetch doctor appointments
   const fetchAppointments = async () => {
-    const doctorId = "DOCTOR_ID_HERE"; // replace with logged-in doctor id
+    const doctorId = "699485e41f598cbdd1aad1bb"; // replace with logged-in doctor id
 
     const res = await axios.get(
-      `http://localhost:8080/api/appointment/doctor/${doctorId}`
+      `http://localhost:8080/api/appointment/doctor/${doctorId}`,
     );
 
     if (res.data.success) {
@@ -39,7 +40,7 @@ function ManageAppointment() {
   const approveAppointment = async (id) => {
     const { appointmentDate, appointmentTime } = timeData[id] || {};
 
-    await axios.put(`http://localhost:5000/api/appointment/approve/${id}`, {
+    await axios.put(`http://localhost:8080/api/appointment/approve/${id}`, {
       appointmentDate,
       appointmentTime,
     });
@@ -50,23 +51,39 @@ function ManageAppointment() {
 
   // ❌ Reject Appointment
   const rejectAppointment = async (id) => {
-    await axios.put(`http://localhost:5000/api/appointment/reject/${id}`);
+    await axios.put(`http://localhost:8080/api/appointment/reject/${id}`);
     alert("Appointment Rejected ❌");
     fetchAppointments();
   };
 
   return (
+    <div>
+      <NavbarPatient/>
+   
     <div className="p-6">
       <h2 className="text-xl font-bold mb-4">📋 Manage Appointments</h2>
 
       {appointments.map((app) => (
-        <div
-          key={app._id}
-          className="bg-white shadow p-4 mb-4 rounded border"
-        >
-          <p><b>Patient:</b> {app.patientName}</p>
-          <p><b>Problem:</b> {app.problem}</p>
-          <p><b>Status:</b> {app.status}</p>
+        <div key={app._id} className="bg-white shadow p-4 mb-4 rounded border">
+          <p>
+            <b>Patient:</b> {app.patientName}
+          </p>
+          <p>
+            <b>Email:</b> {app.email}
+          </p>
+          <p>
+            <b>Phone:</b> {app.phone}
+          </p>
+          <p>
+            <b>Problem:</b> {app.problem}
+          </p>
+
+          <p>
+            <b>Address:</b> {app.address}
+          </p>
+          <p>
+            <b>Status:</b> {app.status}
+          </p>
 
           {/* Date Input */}
           <Input
@@ -106,6 +123,8 @@ function ManageAppointment() {
         </div>
       ))}
     </div>
+
+     </div>
   );
 }
 

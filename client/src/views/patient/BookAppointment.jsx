@@ -27,7 +27,13 @@ function BookAppointment() {
 
       if (res.data.success) {
         toast.success("Appointment Requested Successfully ✅");
-        setForm({ patientName: "", doctorId: "", problem: "" });
+        setForm({
+          patientName: "",
+          email: "",
+          phone: "",
+          problem: "",
+          address: "",
+        });
       } else {
         toast.error("Failed to book appointment ❌");
       }
@@ -40,6 +46,7 @@ function BookAppointment() {
   return (
     <div className="bg-gray-100">
       <NavbarPatient />
+      
 
       <div className="max-w-xl mx-auto  p-6 shadow-lg rounded-xl mt-10 bg-gray-200">
         <h2 className="text-xl font-bold text-center mb-4">
@@ -95,6 +102,7 @@ function BookAppointment() {
           />
         </div>
       </div>
+      <Toaster position="top-right" />
     </div>
   );
 }
