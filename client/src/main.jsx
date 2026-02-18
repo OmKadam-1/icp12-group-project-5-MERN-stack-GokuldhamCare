@@ -3,6 +3,8 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./views/auth/Signup";
 import BookAppointment from "./views/patient/BookAppointment";
+import DoctorDashboard from "./views/doctor/DoctorDashboard";
+import PatientDashboard from "./views/patient/PatientDashboard";
 import ManageAppointment from "./views/doctor/ManageAppointment";
 import MyAppointments from "./views/patient/MyAppointment";
 
@@ -13,6 +15,8 @@ root.render(
     <Routes>
       <Route path="/signup" element={<Signup />} />
       <Route path="/patient/book" element={<BookAppointment />} />
+       <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+        <Route path="/" element={<PatientDashboard />} />
       <Route
         path="/doctor/manage-appointments"
         element={<ManageAppointment />}
