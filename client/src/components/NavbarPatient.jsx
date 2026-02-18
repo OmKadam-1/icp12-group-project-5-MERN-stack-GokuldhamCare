@@ -95,7 +95,7 @@ const NavbarPatient = () => {
           <hr />
 
           <Link
-            to="/doctor/login"
+            to="/login"
             onClick={() => setMenuOpen(false)}
             className="block w-full border-2 border-green-600 text-green-600 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition text-center"
           >
@@ -103,7 +103,7 @@ const NavbarPatient = () => {
           </Link>
 
           <Link
-            to="/patient/login"
+            to="/signup"
             onClick={() => setMenuOpen(false)}
             className="block w-full bg-green-500 text-white py-2 rounded-full font-medium hover:bg-green-600 transition text-center"
           >
