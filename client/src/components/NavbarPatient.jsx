@@ -57,14 +57,14 @@ const NavbarPatient = () => {
 
         <div className="hidden lg:flex items-center gap-4">
           <Link
-            to="/doctor/login"
+            to="/login"
             className="flex items-center gap-2 border-2 border-green-600 text-green-600 px-5 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition"
           >
             Doctor/Patient
           </Link>
 
           <Link
-            to="/patient/login"
+            to="/signup"
             className="bg-green-500 text-white px-6 py-2 rounded-full font-medium shadow-md hover:bg-green-600 transition"
           >
             Registration
