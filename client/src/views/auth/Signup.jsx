@@ -45,17 +45,17 @@ function Signup() {
         <h2 className="text-xl font-bold mb-4 text-center">📝 Sign Up</h2>
 
         <Input
-          type={"email"}
-          placeholder={"Enter Your Email"}
-          name={"email"}
+          type="email"
+          placeholder="Enter Your Email"
+          name="email"
           value={form.email}
           onChange={handleChange}
         />
 
         <Input
-          type={"password"}
-          placeholder={"Enter Your Password"}
-          name={"password"}
+          type="password"
+          placeholder="Enter Your Password"
+          name="password"
           value={form.password}
           onChange={handleChange}
         />
