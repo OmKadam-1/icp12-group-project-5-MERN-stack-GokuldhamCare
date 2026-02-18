@@ -6,18 +6,27 @@ import NavbarPatient from "../../components/NavbarPatient";
 
 function ManageAppointment() {
   const [appointments, setAppointments] = useState([]);
-  const [timeData, setTimeData] = useState({}); // store date & time for each appointment
+  const [timeData, setTimeData] = useState({});
+
+  const doctorId = localStorage.getItem("userId");
 
   // 🔹 Fetch doctor appointments
   const fetchAppointments = async () => {
-    const doctorId = "699485e41f598cbdd1aad1bb"; // replace with logged-in doctor id
+    try {
+      const res = await axios.get(
+        `http://localhost:8080/api/appointment/doctor/${doctorId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
-    const res = await axios.get(
-      `http://localhost:8080/api/appointment/doctor/${doctorId}`,
-    );
-
-    if (res.data.success) {
-      setAppointments(res.data.data);
+      if (res.data.success) {
+        setAppointments(res.data.data);
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -38,93 +47,100 @@ function ManageAppointment() {
 
   // ✅ Approve Appointment
   const approveAppointment = async (id) => {
-    const { appointmentDate, appointmentTime } = timeData[id] || {};
+    try {
+      const { appointmentDate, appointmentTime } = timeData[id] || {};
 
-    await axios.put(`http://localhost:8080/api/appointment/approve/${id}`, {
-      appointmentDate,
-      appointmentTime,
-    });
+      await axios.put(
+        `http://localhost:8080/api/appointment/approve/${id}`,
+        { appointmentDate, appointmentTime },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
-    alert("Appointment Approved ✅");
-    fetchAppointments();
+      alert("Appointment Approved ✅");
+      fetchAppointments();
+    } catch (error) {
+      alert("Error approving appointment ❌");
+    }
   };
 
   // ❌ Reject Appointment
   const rejectAppointment = async (id) => {
-    await axios.put(`http://localhost:8080/api/appointment/reject/${id}`);
-    alert("Appointment Rejected ❌");
-    fetchAppointments();
+    try {
+      await axios.put(
+        `http://localhost:8080/api/appointment/reject/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      alert("Appointment Rejected ❌");
+      fetchAppointments();
+    } catch (error) {
+      alert("Error rejecting appointment ❌");
+    }
   };
 
   return (
     <div>
-      <NavbarPatient/>
-   
-    <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">📋 Manage Appointments</h2>
+      <NavbarPatient />
 
-      {appointments.map((app) => (
-        <div key={app._id} className="bg-white shadow p-4 mb-4 rounded border">
-          <p>
-            <b>Patient:</b> {app.patientName}
-          </p>
-          <p>
-            <b>Email:</b> {app.email}
-          </p>
-          <p>
-            <b>Phone:</b> {app.phone}
-          </p>
-          <p>
-            <b>Problem:</b> {app.problem}
-          </p>
+      <div className="p-6">
+        <h2 className="text-xl font-bold mb-4">📋 Manage Appointments</h2>
 
-          <p>
-            <b>Address:</b> {app.address}
-          </p>
-          <p>
-            <b>Status:</b> {app.status}
-          </p>
+        {appointments.map((app) => (
+          <div
+            key={app._id}
+            className="bg-white shadow p-4 mb-4 rounded border"
+          >
+            <p><b>Patient:</b> {app.patientName}</p>
+            <p><b>Email:</b> {app.email}</p>
+            <p><b>Phone:</b> {app.phone}</p>
+            <p><b>Problem:</b> {app.problem}</p>
+            <p><b>Address:</b> {app.address}</p>
+            <p><b>Status:</b> {app.status}</p>
 
-          {/* Date Input */}
-          <Input
-            type="date"
-            placeholder="Appointment Date"
-            value={timeData[app._id]?.appointmentDate || ""}
-            onChange={(e) =>
-              handleTimeChange(app._id, "appointmentDate", e.target.value)
-            }
-          />
-
-          {/* Time Input */}
-          <Input
-            type="time"
-            placeholder="Appointment Time"
-            value={timeData[app._id]?.appointmentTime || ""}
-            onChange={(e) =>
-              handleTimeChange(app._id, "appointmentTime", e.target.value)
-            }
-          />
-
-          <div className="flex mt-2">
-            <Button
-              title="Approve"
-              size="small"
-              variant="primary"
-              onClick={() => approveAppointment(app._id)}
+            <Input
+              type="date"
+              value={timeData[app._id]?.appointmentDate || ""}
+              onChange={(e) =>
+                handleTimeChange(app._id, "appointmentDate", e.target.value)
+              }
             />
 
-            <Button
-              title="Reject"
-              size="small"
-              variant="secondary"
-              onClick={() => rejectAppointment(app._id)}
+            <Input
+              type="time"
+              value={timeData[app._id]?.appointmentTime || ""}
+              onChange={(e) =>
+                handleTimeChange(app._id, "appointmentTime", e.target.value)
+              }
             />
+
+            <div className="flex mt-2">
+              <Button
+                title="Approve"
+                size="small"
+                variant="primary"
+                onClick={() => approveAppointment(app._id)}
+              />
+
+              <Button
+                title="Reject"
+                size="small"
+                variant="secondary"
+                onClick={() => rejectAppointment(app._id)}
+              />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
-
-     </div>
   );
 }
 
