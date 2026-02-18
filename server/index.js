@@ -60,20 +60,22 @@ app.post("/api/auth/login",loginUser);
 // api for booking appointment
 app.post("/api/appointment/book", authenticateJWT,
   authorizeRole("PATIENT"), postAppointment);
+
 // api for fetching appointments for a patient
 app.get("/api/appointment/patient/:patientId", authenticateJWT,
   authorizeRole("PATIENT"), getPatientAppointments);
-// api for fetching appointments for a doctor
 
-app.get("/api/appointment/doctor/:doctorId", authenticateJWT,
+// api for fetching appointments for a doctor
+app.get("/api/appointment/doctor", authenticateJWT,
   authorizeRole("DOCTOR"), getDoctorAppointments);
+
 // api for approving an appointment
 app.put("/api/appointment/approve/:id", authenticateJWT,
   authorizeRole("DOCTOR"), approveAppointment);
+
 // api for rejecting an appointment
 app.put("/api/appointment/reject/:id", authenticateJWT,
   authorizeRole("DOCTOR"), rejectAppointment);
-
 
 
 app.listen(PORT, () => {
