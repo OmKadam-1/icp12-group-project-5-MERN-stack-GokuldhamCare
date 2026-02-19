@@ -100,6 +100,12 @@ function Contact() {
                             <h1 className="px-6  italic py-2 text-m">Mail :- ashishsmathpati@gmail.com</h1>
 
                         </div>
+                        <iframe
+            title="map"
+            className="w-full min-h-[300px] rounded-xl shadow-xl my-7
+             border-2 border-solid border-green-600 hover:shadoow-xl/30 hover:shadow-green-600 duration-400"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30584.90662048613!2d73.91881922148384!3d18.497252885849324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2e9ff81f1aae9%3A0x2560343555ac8b53!2sHadapsar%2C%20Pune%2C%20Maharashtra!5e1!3m2!1sen!2sin!4v1771491556635!5m2!1sen!2sin"
+          />
                     </div>
 
                 </div>
