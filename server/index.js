@@ -66,7 +66,7 @@ app.get("/api/appointment/patient/:patientId", authenticateJWT,
   authorizeRole("PATIENT"), getPatientAppointments);
 
 // api for fetching appointments for a doctor
-app.get("/api/appointment/doctor", authenticateJWT,
+app.get("/api/appointment/doctor/:doctorId", authenticateJWT,
   authorizeRole("DOCTOR"), getDoctorAppointments);
 
 // api for approving an appointment
