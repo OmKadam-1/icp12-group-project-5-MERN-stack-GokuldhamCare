@@ -21,4 +21,12 @@ function Contact() {
     await axios.post("http://localhost:5173/", data)
     alert("Message Sent Successfully")
   }
+  return (
+    <div className="min-h-screen flex flex-col items-center p-10">
+      <h1 className="text-4xl font-bold text-green-700 mb-10">
+        Contact To Our Clinic
+      </h1>
+</div>
+
+  )
 }
