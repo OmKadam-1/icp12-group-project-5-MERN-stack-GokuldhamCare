@@ -22,7 +22,7 @@ function Login() {
       const role = localStorage.getItem("role");
 
       if (role === "DOCTOR") {
-        navigate("/doctor-dashboard");
+        navigate("/doctor/dashboard");
       } else {
         navigate("/");
       }
@@ -49,7 +49,7 @@ function Login() {
 
       // Role-based redirect
       if (res.data.role === "DOCTOR") {
-        navigate("/doctor-dashboard");
+        navigate("/doctor/dashboard");
       } else if (res.data.role === "PATIENT") {
         navigate("/");
       }

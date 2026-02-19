@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import NavbarPatient from "../../components/NavbarPatient";
+import AdminNavbar from "../../components/NavbarAdmin";
 
 function ManageAppointment() {
   const [appointments, setAppointments] = useState([]);
@@ -89,7 +89,7 @@ function ManageAppointment() {
 
   return (
     <div>
-      <NavbarPatient />
+      <AdminNavbar />
 
       <div className="p-6">
         <h2 className="text-xl font-bold mb-4">📋 Manage Appointments</h2>

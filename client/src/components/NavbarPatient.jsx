@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
+import Avatar from "./Avatar";
+import Button from "./Button";
+import { isUserLoggedIn, logoutUser } from "../utils";
 
 const NavbarPatient = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Check login status
+  const loggedIn = isUserLoggedIn();
+
+  // Get role for avatar display
+  const role = localStorage.getItem("role") || "User";
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -23,7 +32,6 @@ const NavbarPatient = () => {
 
         <Link to="/" className="flex items-center gap-3 cursor-pointer">
           <img src={Logo} alt="logo" className="w-14" />
-
           <div>
             <h1 className="text-2xl font-bold text-green-600">
               <span className="text-black">Health</span>Matrix+
@@ -34,8 +42,8 @@ const NavbarPatient = () => {
           </div>
         </Link>
 
+        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center bg-white border border-green-400 rounded-full px-8 py-3 shadow-md space-x-10">
-
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
 
@@ -56,6 +64,7 @@ const NavbarPatient = () => {
           })}
         </div>
 
+        {/* Right Side (Desktop) */}
         <div className="hidden lg:flex items-center gap-4">
           <Link
             to="/login"
@@ -77,7 +86,6 @@ const NavbarPatient = () => {
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-
       </nav>
 
       {menuOpen && (
@@ -96,22 +104,40 @@ const NavbarPatient = () => {
 
           <hr />
 
-          <Link
-            to="/login"
-            onClick={() => setMenuOpen(false)}
-            className="block w-full border-2 border-green-600 text-green-600 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition text-center"
-          >
-            Doctor/Patient
-          </Link>
+          {!loggedIn && (
+            <>
+              <Link
+                to="/login"
+                onClick={() => setMenuOpen(false)}
+                className="block w-full border-2 border-green-600 text-green-600 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition text-center"
+              >
+                Doctor/Patient
+              </Link>
 
-          <Link
-            to="/signup"
-            onClick={() => setMenuOpen(false)}
-            className="block w-full bg-green-500 text-white py-2 rounded-full font-medium hover:bg-green-600 transition text-center"
-          >
-            Registration
-          </Link>
+              <Link
+                to="/signup"
+                onClick={() => setMenuOpen(false)}
+                className="block w-full bg-green-500 text-white py-2 rounded-full font-medium hover:bg-green-600 transition text-center"
+              >
+                Registration
+              </Link>
+            </>
+          )}
 
+          {loggedIn && (
+            <div className="flex items-center justify-between">
+              <Avatar name={role} size="small" />
+              <Button
+                title="Logout"
+                size="small"
+                variant="secondary"
+                onClick={() => {
+                  logoutUser();
+                  setMenuOpen(false);
+                }}
+              />
+            </div>
+          )}
         </div>
       )}
 

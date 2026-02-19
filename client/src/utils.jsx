@@ -4,8 +4,8 @@ const setPageTitle = (title) => {
   document.title = title;
 };
 
-const isUserLoggedIn = () => {
-  const token = localStorage.getItem("token");
+ const isUserLoggedIn = () => {
+   const token = localStorage.getItem("token");
   return !!token;
 };
 
@@ -25,7 +25,7 @@ const logoutUser = () => {
   toast.success("Logged out successfully!");
 
   setTimeout(() => {
-    window.location.href = "/login";
+    window.location.href = "/";
   }, 1500);
 };
 
