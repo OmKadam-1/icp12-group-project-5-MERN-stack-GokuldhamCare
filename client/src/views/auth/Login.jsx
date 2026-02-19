@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { setPageTitle } from "../../utils.jsx";
+import { setPageTitle, isUserLoggedIn } from "../../utils.jsx";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
-function Signup() {
+function Login() {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -15,8 +15,19 @@ function Signup() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setPageTitle("Sign Up");
-  }, []);
+    setPageTitle("Login");
+
+    // If already logged in, redirect automatically
+    if (isUserLoggedIn()) {
+      const role = localStorage.getItem("role");
+
+      if (role === "DOCTOR") {
+        navigate("/doctor-dashboard");
+      } else {
+        navigate("/");
+      }
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,16 +35,26 @@ function Signup() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:8080/api/auth/register", form);
+      const res = await axios.post(
+        "http://localhost:8080/api/auth/login",
+        form,
+      );
 
-      toast.success("Registration Successful ✅");
+      // Save authentication data
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", res.data.role);
+      localStorage.setItem("userId", res.data.userId);
 
-      // Redirect to login after short delay
-      setTimeout(() => {
-        navigate("/login");
-      }, 1500);
+      toast.success("Login Successful ✅");
+
+      // Role-based redirect
+      if (res.data.role === "DOCTOR") {
+        navigate("/doctor-dashboard");
+      } else if (res.data.role === "PATIENT") {
+        navigate("/");
+      }
     } catch (error) {
-      toast.error(error.response?.data?.error || "Registration Failed ❌");
+      toast.error(error.response?.data?.error || "Login Failed ❌");
     }
   };
 
@@ -42,7 +63,7 @@ function Signup() {
       <Toaster position="top-right" />
 
       <div className="bg-white p-6 rounded shadow-md w-80">
-        <h2 className="text-xl font-bold mb-4 text-center">📝 Sign Up</h2>
+        <h2 className="text-xl font-bold mb-4 text-center">🔐 Login</h2>
 
         <Input
           type="email"
@@ -61,24 +82,14 @@ function Signup() {
         />
 
         <Button
-          title="   Sign Up"
+          title=" Login"
           size="medium"
           variant="primary"
           onClick={handleSubmit}
         />
-
-        <p className="text-sm text-center mt-3">
-          Already have an account?{" "}
-          <span
-            className="text-blue-600 cursor-pointer"
-            onClick={() => navigate("/login")}
-          >
-            Login
-          </span>
-        </p>
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default Login;

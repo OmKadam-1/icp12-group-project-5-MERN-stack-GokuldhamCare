@@ -11,7 +11,7 @@ const NavbarPatient = () => {
     { name: "Home", path: "/" },
     { name: "Doctors", path: "/doctors" },
     { name: "Services", path: "/services" },
-    { name: "Appointments", path: "/appointments" },
+    { name: "Appointments", path: "/patient/book" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -57,14 +57,14 @@ const NavbarPatient = () => {
 
         <div className="hidden lg:flex items-center gap-4">
           <Link
-            to="/doctor/login"
+            to="/login"
             className="flex items-center gap-2 border-2 border-green-600 text-green-600 px-5 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition"
           >
             Doctor/Patient
           </Link>
 
           <Link
-            to="/patient/login"
+            to="/signup"
             className="bg-green-500 text-white px-6 py-2 rounded-full font-medium shadow-md hover:bg-green-600 transition"
           >
             Registration
@@ -95,7 +95,7 @@ const NavbarPatient = () => {
           <hr />
 
           <Link
-            to="/doctor/login"
+            to="/login"
             onClick={() => setMenuOpen(false)}
             className="block w-full border-2 border-green-600 text-green-600 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition text-center"
           >
@@ -103,7 +103,7 @@ const NavbarPatient = () => {
           </Link>
 
           <Link
-            to="/patient/login"
+            to="/signup"
             onClick={() => setMenuOpen(false)}
             className="block w-full bg-green-500 text-white py-2 rounded-full font-medium hover:bg-green-600 transition text-center"
           >
