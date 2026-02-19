@@ -22,7 +22,7 @@ function Login() {
       const role = localStorage.getItem("role");
 
       if (role === "DOCTOR") {
-        navigate("/doctor-dashboard");
+        navigate("/doctor/dashboard");
       } else {
         navigate("/");
       }

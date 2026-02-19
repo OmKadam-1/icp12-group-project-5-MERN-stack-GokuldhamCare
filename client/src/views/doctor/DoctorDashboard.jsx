@@ -1,5 +1,6 @@
 import React from 'react'
 import NavbarAdmin from '../../components/NavbarAdmin'
+import Logo from "../../assets/logo.png";
 
 function DoctorDashboard() {
   return (

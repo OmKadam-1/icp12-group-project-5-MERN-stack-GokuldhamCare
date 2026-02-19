@@ -7,7 +7,7 @@ import BookAppointment from "./views/patient/BookAppointment";
 import DoctorDashboard from "./views/doctor/DoctorDashboard";
 import PatientDashboard from "./views/patient/PatientDashboard";
 import ManageAppointment from "./views/doctor/ManageAppointment";
-import MyAppointments from "./views/patient/MyAppointment";
+import MyAppointment from "./views/patient/MyAppointment";
 
 const root = createRoot(document.getElementById("root"));
 
