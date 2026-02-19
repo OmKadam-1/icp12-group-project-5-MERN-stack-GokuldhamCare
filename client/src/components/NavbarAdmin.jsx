@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -6,12 +6,15 @@ import {
   Briefcase,
   PlusSquare,
   CalendarCheck,
+  Menu,
+  X,
 } from "lucide-react";
 
-import Logo from "../assets/logo.png"; 
+import Logo from "../assets/logo.png";
 
 const NavbarAdmin = () => {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { name: "Dashboard", path: "/admin/dashboard", icon: LayoutDashboard },
@@ -22,39 +25,74 @@ const NavbarAdmin = () => {
   ];
 
   return (
-    <div className="w-full flex items-center justify-between px-8 py-4 bg-[#e6f4ef]">
-      <div className="flex items-center gap-3">
-        <img src={Logo} alt="logo" className="w-12 h-12 object-contain" />
-        <div>
-                     <h1 className="text-2xl font-bold text-green-600">
+    <div className="relative w-full bg-[#e6f4ef] px-6 py-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <img src={Logo} alt="logo" className="w-12 h-12" />
+          <div>
+            <h1 className="text-xl font-bold text-green-600">
               <span className="text-black">Health</span>Matrix+
             </h1>
-
-          <p className="text-sm text-gray-500">Healthcare Solutions</p>
+            <p className="text-xs text-gray-500">Healthcare Solutions</p>
+          </div>
         </div>
+        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center bg-white border border-green-200 rounded-full px-6 py-3 shadow-md gap-8">
+          {navItems.map((item, index) => {
+            const Icon = item.icon;
+            const isActive = location.pathname === item.path;
+
+            return (
+              <Link
+                key={index}
+                to={item.path}
+                className={`flex flex-col items-center text-xs font-medium transition
+                  ${isActive
+                    ? "text-green-600"
+                    : "text-gray-600 hover:text-green-600"}
+                `}
+              >
+                <Icon size={18} />
+                {item.name}
+              </Link>
+            );
+          })}
+        </div>
+        <button
+          className="lg:hidden text-green-700"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+
       </div>
 
-      <div className="hidden lg:flex items-center bg-white border border-green-200 rounded-full px-6 py-3 shadow-md gap-8">
+      {isOpen && (
+        <div className="lg:hidden mt-4 bg-white border border-green-200 rounded-xl shadow-md p-4 space-y-4">
 
-        {navItems.map((item, index) => {
-          const Icon = item.icon;
-          const isActive = location.pathname === item.path;
+          {navItems.map((item, index) => {
+            const Icon = item.icon;
+            const isActive = location.pathname === item.path;
 
-          return (
-            <Link
-              key={index}
-              to={item.path}
-              className={`flex flex-col items-center text-xs font-medium transition
-                ${isActive ? "text-green-600" : "text-gray-600 hover:text-green-600"}
-              `}
-            >
-              <Icon size={18} />
-              {item.name}
-            </Link>
-          );
-        })}
+            return (
+              <Link
+                key={index}
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+                className={`flex items-center gap-3 font-medium transition
+                  ${isActive
+                    ? "text-green-600"
+                    : "text-gray-700 hover:text-green-600"}
+                `}
+              >
+                <Icon size={20} />
+                {item.name}
+              </Link>
+            );
+          })}
 
-      </div>
+        </div>
+      )}
+
     </div>
   );
 };
