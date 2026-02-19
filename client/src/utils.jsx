@@ -4,10 +4,10 @@ const setPageTitle = (title) => {
   document.title = title;
 };
 
-const isUserLoggedIn = () => {
-  const token = localStorage.getItem("token");
-  return !!token;
-};
+// const isUserLoggedIn = () => {
+//   const token = localStorage.getItem("token");
+//   return !!token;
+// };
 
 const getUserJwtToken = () => {
   return localStorage.getItem("token");
