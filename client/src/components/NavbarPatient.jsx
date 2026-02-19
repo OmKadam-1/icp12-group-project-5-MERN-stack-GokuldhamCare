@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
+import { getUserData, logoutUser } from "../utils";
 
 const NavbarPatient = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userData, setUserData] = useState({});
+
+  const fetchUserData = () => {
+    const data = getUserData();
+    console.log("Fetched user data:", data);
+    setUserData(data);
+  };
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -15,27 +23,26 @@ const NavbarPatient = () => {
     { name: "Contact", path: "/contact" },
   ];
 
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   return (
     <>
       <div className="h-1 bg-green-500 w-full"></div>
       <nav className="w-full bg-gray-100 px-6 md:px-12 py-4 flex items-center justify-between shadow-sm">
-        <Link
-          to="/"
-          className="flex items-center gap-3 cursor-pointer">
+        <Link to="/" className="flex items-center gap-3 cursor-pointer">
           <img src={Logo} alt="logo" className="w-14" />
 
           <div>
             <h1 className="text-2xl font-bold text-green-600">
               <span className="text-black">Health</span>Matrix+
             </h1>
-            <p className="text-sm text-gray-600">
-              Healthcare Solutions
-            </p>
+            <p className="text-sm text-gray-600">Healthcare Solutions</p>
           </div>
         </Link>
 
         <div className="hidden lg:flex items-center bg-white border border-green-400 rounded-full px-8 py-3 shadow-md space-x-10">
-
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
 
@@ -44,10 +51,11 @@ const NavbarPatient = () => {
                 key={item.path}
                 to={item.path}
                 className={`font-medium transition-all duration-300 px-5 py-2 rounded-full
-                 ${isActive
-                    ? "bg-green-500 text-white shadow-md"
-                    : "text-gray-700 hover:bg-green-100 hover:text-green-600"
-                  }`}
+                 ${
+                   isActive
+                     ? "bg-green-500 text-white shadow-md"
+                     : "text-gray-700 hover:bg-green-100 hover:text-green-600"
+                 }`}
               >
                 {item.name}
               </Link>
@@ -69,18 +77,15 @@ const NavbarPatient = () => {
           >
             Registration
           </Link>
-
         </div>
         <div className="lg:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-
       </nav>
       {menuOpen && (
         <div className="lg:hidden bg-white shadow-md px-6 py-6 space-y-5">
-
           {navItems.map((item) => (
             <Link
               key={item.path}
@@ -109,7 +114,6 @@ const NavbarPatient = () => {
           >
             Registration
           </Link>
-
         </div>
       )}
     </>
