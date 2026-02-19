@@ -26,11 +26,10 @@ const NavbarPatient = () => {
 
   return (
     <>
-      <div className="h-1 bg-green-500 w-full"></div>
+      <div className="fixed top-0 left-0 z-50 h-1 bg-green-500 w-full"></div> 
 
-      <nav className="w-full bg-gray-100 px-6 md:px-12 py-4 flex items-center justify-between shadow-sm">
-        
-        {/* Logo */}
+      <nav className="fixed top-1 left-0 w-full z-40 bg-gray-100 px-6 md:px-12 py-4 flex items-center justify-between shadow-sm">
+
         <Link to="/" className="flex items-center gap-3 cursor-pointer">
           <img src={Logo} alt="logo" className="w-14" />
           <div>
@@ -53,11 +52,11 @@ const NavbarPatient = () => {
                 key={item.path}
                 to={item.path}
                 className={`font-medium transition-all duration-300 px-5 py-2 rounded-full
-                  ${
-                    isActive
-                      ? "bg-green-500 text-white shadow-md"
-                      : "text-gray-700 hover:bg-green-100 hover:text-green-600"
-                  }`}
+                 ${
+                   isActive
+                     ? "bg-green-500 text-white shadow-md"
+                     : "text-gray-700 hover:bg-green-100 hover:text-green-600"
+                 }`}
               >
                 {item.name}
               </Link>
@@ -67,39 +66,21 @@ const NavbarPatient = () => {
 
         {/* Right Side (Desktop) */}
         <div className="hidden lg:flex items-center gap-4">
+          <Link
+            to="/login"
+            className="flex items-center gap-2 border-2 border-green-600 text-green-600 px-5 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition"
+          >
+            Doctor/Patient
+          </Link>
 
-          {!loggedIn && (
-            <>
-              <Link
-                to="/login"
-                className="flex items-center gap-2 border-2 border-green-600 text-green-600 px-5 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition"
-              >
-                Doctor/Patient
-              </Link>
-
-              <Link
-                to="/signup"
-                className="bg-green-500 text-white px-6 py-2 rounded-full font-medium shadow-md hover:bg-green-600 transition"
-              >
-                Registration
-              </Link>
-            </>
-          )}
-
-          {loggedIn && (
-            <div className="flex items-center gap-3">
-              <Avatar name={role} size="medium" />
-              <Button
-                title="Logout"
-                size="medium"
-                variant="secondary"
-                onClick={logoutUser}
-              />
-            </div>
-          )}
+          <Link
+            to="/signup"
+            className="bg-green-500 text-white px-6 py-2 rounded-full font-medium shadow-md hover:bg-green-600 transition"
+          >
+            Registration
+          </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="lg:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -107,9 +88,8 @@ const NavbarPatient = () => {
         </div>
       </nav>
 
-      {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="lg:hidden bg-white shadow-md px-6 py-6 space-y-5">
+        <div className="fixed top-[85px] left-0 w-full z-30 lg:hidden bg-white shadow-md px-6 py-6 space-y-5">
 
           {navItems.map((item) => (
             <Link
@@ -160,6 +140,9 @@ const NavbarPatient = () => {
           )}
         </div>
       )}
+
+      <div className="h-[90px]"></div>
+
     </>
   );
 };

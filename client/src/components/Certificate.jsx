@@ -1,45 +1,7 @@
 import React from "react";
-import certificate1 from "../assets/certificate1.png";
-import certificate2 from "../assets/certificate2.svg";
-import certificate3 from "../assets/certificate3.svg";
-import certificate4 from "../assets/certificate4.png";
-import certificate5 from "../assets/certificate5.png";
-import certificate6 from "../assets/certificate6.png";
+import certificates from "../configs/certificate";
 
 const Certificates = () => {
-  const certificates = [
-    {
-      id: 1,
-      name: "Medical Commission",
-      image: certificate1,
-    },
-    {
-      id: 2,
-      name: "Ministry of Health",
-      image: certificate2,
-    },
-    {
-      id: 3,
-      name: "Medical Council",
-      image: certificate3,
-    },
-    {
-      id: 4,
-      name: "NABH Accredited",
-      image: certificate4,
-    },
-    {
-      id: 5,
-      name: "Government Approved",
-      image: certificate5,
-    },
-    {
-      id: 6,
-      name: "Quality Healthcare",
-      image: certificate6,
-    },
-  ];
-
   return (
     <section className="bg-gray-50 py-16">
       <div className="text-center mb-12">
@@ -67,6 +29,7 @@ const Certificates = () => {
         </div>
 
       </div>
+
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 px-4">
 
         {certificates.map((cert) => (

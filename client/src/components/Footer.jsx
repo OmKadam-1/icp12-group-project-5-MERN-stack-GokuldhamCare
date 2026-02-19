@@ -14,6 +14,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+import logo from "../assets/logo.png"
 
 const Footer = () => {
   const socialIcons = [
@@ -33,13 +34,23 @@ const Footer = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <footer className="bg-[#e6f4ef] text-green-800 pt-14 pb-6 px-6 md:px-16 ">
       
+=======
+    <footer className="bg-[#e6f4ef] text-green-800 pt-14 pb-6 px-6 md:px-16">
+
+>>>>>>> 980d58d796ff0946c2517d9347fe6daf00a33b2d
       <div className="grid md:grid-cols-4 gap-10">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center">
-              <span className="text-green-700 font-bold text-lg">MC</span>
+
+            <div className="w-12 h-12 flex items-center justify-center">
+              <img
+                src={logo}
+                alt="HealthMatrix Logo"
+                className="w-10 h-10 object-contain"
+              />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-green-600">
