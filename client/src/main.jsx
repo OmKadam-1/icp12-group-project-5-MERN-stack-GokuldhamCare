@@ -23,7 +23,7 @@ root.render(
         path="/doctor/manage-appointments"
         element={<ManageAppointment />}
       />
-      <Route path="/patient/my-appointments" element={<MyAppointments />} />
+      <Route path="/patient/my-appointments" element={<MyAppointment />} />
     </Routes>
   </BrowserRouter>,
 );
