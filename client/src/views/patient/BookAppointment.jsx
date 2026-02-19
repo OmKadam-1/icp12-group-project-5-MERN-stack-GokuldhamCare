@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import toast, { Toaster } from "react-hot-toast";
 import NavbarPatient from "../../components/NavbarPatient";
 import { setPageTitle } from "../../utils";
+import Footer from "../../components/Footer";
 
 function BookAppointment() {
   const [form, setForm] = useState({
@@ -58,10 +59,10 @@ function BookAppointment() {
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gradient-to-r from-slate-100 to-teal-50">
       <NavbarPatient />
 
-      <div className="max-w-xl mx-auto p-6 shadow-lg rounded-xl mt-10 bg-gray-200">
+      <div className="max-w-xl mx-auto p-6 shadow-lg rounded-xl mt-10 bg-white">
         <h2 className="text-xl font-bold text-center mb-4">
           🏥 Book Appointment
         </h2>
@@ -117,6 +118,8 @@ function BookAppointment() {
       </div>
 
       <Toaster position="top" />
+
+      <Footer />
     </div>
   );
 }

@@ -17,7 +17,7 @@ const TeamSection = () => {
 
             <div className="flex flex-wrap justify-center gap-8 px-6">
 
-                {doctors.map((doctor) => (
+                {doctors.map((doctor) => ( 
                     <div
                         key={doctor.id}
                         className="w-[280px] bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2">

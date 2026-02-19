@@ -13,7 +13,7 @@ function PatientDashboard() {
       <TeamSection />
       <Footer />
     </div>
-  )
+  ) 
 }
 
 export default PatientDashboard;

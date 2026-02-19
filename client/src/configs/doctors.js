@@ -32,6 +32,7 @@ const doctors = [
     experience: "35 years Experience",
     image: doctor4,
   },
+
 ];
 
 export default doctors;

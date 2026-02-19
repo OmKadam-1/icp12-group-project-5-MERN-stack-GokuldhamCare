@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios"
-import Input from "./Input"
+import Input from "../../components/Input"
 import NavbarPatient from "../../components/NavbarPatient"
 import Footer from "../../components/Footer"
 
