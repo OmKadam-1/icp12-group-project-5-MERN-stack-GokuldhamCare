@@ -8,6 +8,7 @@ import DoctorDashboard from "./views/doctor/DoctorDashboard";
 import PatientDashboard from "./views/patient/PatientDashboard";
 import ManageAppointment from "./views/doctor/ManageAppointment";
 import MyAppointment from "./views/patient/MyAppointment";
+import Contact from "./views/patient/Contact";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -17,6 +18,7 @@ root.render(
       <Route path="/signup" element={<Signup />} />
        <Route path="/login" element={<Login />} />
       <Route path="/patient/book" element={<BookAppointment />} />
+      <Route path="/patient/contact" element={<Contact />} />
        <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
         <Route path="/" element={<PatientDashboard />} />
       <Route
