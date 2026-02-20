@@ -1,8 +1,6 @@
-import AdminNavbar from "../../components/AdminNavbar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { getUserJwtToken } from "../utils";
 import addService from "../../assets/addService.png";
 import { Link } from "react-router";
 import ServiceCard from "../../components/ServiceCard";
@@ -14,11 +12,8 @@ function AllServices() {
   const fetchServices = async () => {
     const userJWT = getUserJwtToken();
     try {
-      const response = await axios.get("http://localhost:8080/api/services", {
-        headers: {
-          Authorization: `Bearer ${userJWT}`,
-        },
-      });
+      const response = await axios.get("http://localhost:8080/api/services", 
+      );
 
       if (response.data.success) {
         toast.success(response.data.message);
