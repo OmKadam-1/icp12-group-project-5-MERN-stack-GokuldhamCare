@@ -10,6 +10,7 @@ import ManageAppointment from "./views/doctor/ManageAppointment";
 import MyAppointment from "./views/patient/MyAppointment";
 import Contact from "./views/patient/Contact";
 import DoctorInbox from "./views/doctor/DoctorInbox";
+import AddServices from "./views/doctor/AddServices";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -17,12 +18,15 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/signup" element={<Signup />} />
-       <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/patient/book" element={<BookAppointment />} />
       <Route path="/patient/contact" element={<Contact />} />
-       <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
-       <Route path="/doctor/doctor-inbox" element={<DoctorInbox />} />
-        <Route path="/" element={<PatientDashboard />} />
+      <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+
+      <Route path="/service/new" element={<AddServices />} />
+
+      <Route path="/doctor/doctor-inbox" element={<DoctorInbox />} />
+      <Route path="/" element={<PatientDashboard />} />
       <Route
         path="/doctor/manage-appointments"
         element={<ManageAppointment />}
