@@ -6,9 +6,11 @@ import User from "./models/User.js";
 
 import bcrypt from "bcryptjs";
 
-import { registerPatient,loginUser } from "./controllers/authController.js";
+import { registerPatient, loginUser } from "./controllers/authController.js";
 import { postAppointment, getPatientAppointments, getDoctorAppointments, approveAppointment, rejectAppointment } from "./controllers/appointment.js";
 import { authenticateJWT, authorizeRole } from "./middlewares/authMiddleware.js";
+import Service from "./models/Service.js";
+
 
 dotenv.config();
 
@@ -53,7 +55,7 @@ app.get("/health", (req, res) => {
 
 app.post("/api/auth/register", registerPatient);
 
-app.post("/api/auth/login",loginUser);
+app.post("/api/auth/login", loginUser);
 
 
 
@@ -77,6 +79,55 @@ app.put("/api/appointment/approve/:id", authenticateJWT,
 app.put("/api/appointment/reject/:id", authenticateJWT,
   authorizeRole("DOCTOR"), rejectAppointment);
 
+// api for creating a service
+app.post("/api/services", authenticateJWT, authorizeRole("DOCTOR"), async (req, res) => {
+
+  const { serviceName, department, description, serviceImg } = req.body;
+
+  const newService = new Service({
+    serviceName,
+    department,
+    description,
+    serviceImg,
+    createdBy: req.user.id,
+  });
+
+  try {
+    const saveService = await newService.save();
+    return res.json({
+      success: true,
+      message: "Service created successfully",
+      data: saveService,
+    });
+  } catch (error) {
+    console.error("Error creating service:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to create service",
+      error: error.message,
+    });
+  }
+});
+
+// api for fetching all services
+app.get("/api/services", async (req, res) => {
+  try {
+    const services = await Service.find().populate("createdBy", "email");
+
+    return res.json({
+      success: true,
+      message: "Services fetched successfully",
+      data: services,
+    });
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch services",
+      error: error.message,
+    });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

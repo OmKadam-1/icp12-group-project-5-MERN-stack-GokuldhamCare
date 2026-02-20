@@ -20,7 +20,7 @@ const NavbarAdmin = () => {
     { name: "Dashboard", path: "/doctor/dashboard", icon: LayoutDashboard },
     { name: "Appointments", path: "/doctor/manage-appointments", icon: Calendar },
     { name: "Service Dashboard", path: "/admin/service-dashboard", icon: Briefcase },
-    { name: "Add Service", path: "/admin/add-service", icon: PlusSquare },
+    { name: "All Service", path: "/service/allservice", icon: PlusSquare },
     { name: "Service Appointments", path: "/admin/service-appointments", icon: CalendarCheck },
   ];
 
