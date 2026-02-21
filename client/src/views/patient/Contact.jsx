@@ -143,7 +143,7 @@ function Contact() {
                   Contact :- 9172896214
                 </h1>
                 <h1 className="px-6  italic py-2 text-m">
-                  Mail :- ashishsmathpati@gmail.com
+                  Mail :- healthmatrix@gmail.com
                 </h1>
               </div>
               <iframe
