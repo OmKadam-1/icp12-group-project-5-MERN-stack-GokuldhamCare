@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./db.js";
 import User from "./models/User.js";
+import ImageKit from "@imagekit/nodejs";
+
 
 import bcrypt from "bcryptjs";
 
@@ -19,6 +21,15 @@ app.use(express.json());
 app.use(cors());
 
 const PORT = process.env.PORT || 8080;
+
+
+
+const client = new ImageKit({
+  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
+});
+
 
 const createDoctor = async () => {
   try {
