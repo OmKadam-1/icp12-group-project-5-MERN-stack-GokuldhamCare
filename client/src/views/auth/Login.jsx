@@ -17,7 +17,7 @@ function Login() {
   useEffect(() => {
     setPageTitle("Login");
 
-    // If already logged in, redirect automatically
+    
     if (isUserLoggedIn()) {
       const role = localStorage.getItem("role");
 
@@ -40,14 +40,15 @@ function Login() {
         form,
       );
 
-      // Save authentication data
+     
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("userId", res.data.userId);
+      localStorage.setItem("name", res.data.name); 
 
       toast.success("Login Successful ✅");
 
-      // Role-based redirect
+      
       if (res.data.role === "DOCTOR") {
         navigate("/doctor/dashboard");
       } else if (res.data.role === "PATIENT") {

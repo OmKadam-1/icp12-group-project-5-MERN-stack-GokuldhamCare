@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 
 function Signup() {
   const [form, setForm] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -28,7 +29,7 @@ function Signup() {
 
       toast.success("Registration Successful ✅");
 
-      // Redirect to login after short delay
+     
       setTimeout(() => {
         navigate("/login");
       }, 1500);
@@ -43,6 +44,13 @@ function Signup() {
 
       <div className="bg-white p-6 rounded shadow-md w-80">
         <h2 className="text-xl font-bold mb-4 text-center">📝 Sign Up</h2>
+        <Input
+          type="text"
+          placeholder="Enter Your Name"
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+        />
 
         <Input
           type="email"
