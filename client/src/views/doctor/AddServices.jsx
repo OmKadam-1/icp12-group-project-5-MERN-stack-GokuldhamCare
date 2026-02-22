@@ -13,6 +13,8 @@ import {
   upload,
 } from "@imagekit/react";
 import PhotoViewer from "../../components/PhotoViewer.jsx";
+import Footer from "../../components/Footer.jsx";
+
 
 function AddServices() {
   const [newService, setNewService] = useState({
@@ -201,6 +203,8 @@ function AddServices() {
         <Button title="Add Service" onClick={addService} />
       </div>
       <Toaster />
+             <Footer />
+
     </div>
   );
 }
