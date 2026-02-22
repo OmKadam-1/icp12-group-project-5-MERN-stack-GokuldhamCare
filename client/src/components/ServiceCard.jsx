@@ -20,7 +20,7 @@ function ServiceCard({ serviceImg, serviceName, department, description }) {
           {serviceName}
         </h2>
 
-        <div className=" flex border border-emerald-400 text-sm px-4 py-1 rounded-full mb-4">
+        <div  className="inline-block border border-emerald-400 text-sm px-4 py-1 rounded-full mb-2">
           {" "}
           {department}
         </div>

@@ -78,9 +78,7 @@ const NavbarPatient = () => {
 
           {loggedIn && (
             <div className="flex items-center gap-3">
-               <span className="text-gray-700 font-medium">
-                Hello, {role}
-              </span>
+               
 
               <Avatar name={role} size="medium" />
               <span className="text-gray-700 font-medium">Hello, {role}</span>
