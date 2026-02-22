@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
 import Button from "./Button";
-
 import { isUserLoggedIn, logoutUser } from "../utils";
 import Avatar from "./Avatar";
 
@@ -25,18 +24,15 @@ const NavbarPatient = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 z-50 h-1 bg-green-500 w-full"></div> 
+      <div className="fixed top-0 left-0 z-50 h-1 bg-green-500 w-full"></div>
       <nav className="fixed top-1 left-0 w-full z-40 bg-gray-100 px-6 md:px-12 py-4 flex items-center justify-between shadow-sm">
-
         <Link to="/" className="flex items-center gap-3 cursor-pointer">
           <img src={Logo} alt="logo" className="w-14" />
           <div>
             <h1 className="text-2xl font-bold text-green-600">
               <span className="text-black">Health</span>Matrix+
             </h1>
-            <p className="text-sm text-gray-600">
-              Healthcare Solutions
-            </p>
+            <p className="text-sm text-gray-600">Healthcare Solutions</p>
           </div>
         </Link>
 
@@ -49,10 +45,11 @@ const NavbarPatient = () => {
                 key={item.path}
                 to={item.path}
                 className={`font-medium transition-all duration-300 px-5 py-2 rounded-full
-                 ${isActive
-                    ? "bg-green-500 text-white shadow-md"
-                    : "text-gray-700 hover:bg-green-100 hover:text-green-600"
-                  }`}
+                 ${
+                   isActive
+                     ? "bg-green-500 text-white shadow-md"
+                     : "text-gray-700 hover:bg-green-100 hover:text-green-600"
+                 }`}
               >
                 {item.name}
               </Link>
@@ -61,8 +58,6 @@ const NavbarPatient = () => {
         </div>
 
         <div className="hidden lg:flex items-center gap-4">
-
-         
           {!loggedIn && (
             <>
               <Link
@@ -81,7 +76,6 @@ const NavbarPatient = () => {
             </>
           )}
 
-          
           {loggedIn && (
             <div className="flex items-center gap-3">
                <span className="text-gray-700 font-medium">
@@ -89,6 +83,8 @@ const NavbarPatient = () => {
               </span>
 
               <Avatar name={role} size="medium" />
+              <span className="text-gray-700 font-medium">Hello, {role}</span>
+
               <Button
                 title="Logout"
                 size="medium"
@@ -97,7 +93,6 @@ const NavbarPatient = () => {
               />
             </div>
           )}
-
         </div>
         <div className="lg:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
@@ -108,7 +103,6 @@ const NavbarPatient = () => {
 
       {menuOpen && (
         <div className="fixed top-[85px] left-0 w-full z-30 lg:hidden bg-white shadow-md px-6 py-6 space-y-5">
-
           {navItems.map((item) => (
             <Link
               key={item.path}
@@ -144,9 +138,7 @@ const NavbarPatient = () => {
 
           {loggedIn && (
             <div className="flex items-center justify-between">
-              <span className="text-gray-700 font-medium">
-                Hello, {role}
-              </span>
+              <span className="text-gray-700 font-medium">Hello, {role}</span>
 
               <Avatar name={role} size="small" />
               <Button
@@ -164,7 +156,6 @@ const NavbarPatient = () => {
       )}
 
       <div className="h-[90px]"></div>
-
     </>
   );
 };

@@ -2,7 +2,7 @@ import PhotoViewer from "./PhotoViewer";
 
 function ServiceCard({ serviceImg, serviceName, department, description }) {
   return (
-    <div className=" bg-white  w-[300px] rounded-2xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2">
+    <div className="w-[280px] bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2">
       <div>
         {serviceImg.map((imgUrl, index) => (
           <PhotoViewer key={index} imgUrl={imgUrl} index={index} />
@@ -10,7 +10,7 @@ function ServiceCard({ serviceImg, serviceName, department, description }) {
       </div>
 
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-blue-700 mb-1">
+        <h2 className="text-xl font-semibold">
           {serviceName}
         </h2>
 
