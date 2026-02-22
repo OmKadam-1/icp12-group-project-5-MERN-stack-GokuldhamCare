@@ -10,6 +10,8 @@ const doctors = [
     speciality: "Neurologist",
     experience: "3 years Experience",
     image: doctor1,
+    description:
+      "Expert in diagnosing and treating brain and nervous system disorders.",
   },
   {
     id: 2,
@@ -17,6 +19,8 @@ const doctors = [
     speciality: "Cardiologist",
     experience: "12 years Experience",
     image: doctor2,
+    description:
+      "Specialist in heart diseases, preventive care, and cardiac health management.",
   },
   {
     id: 3,
@@ -24,6 +28,8 @@ const doctors = [
     speciality: "Dermatologist",
     experience: "5 years Experience",
     image: doctor3,
+    description:
+      "Provides advanced treatment for skin, hair, and cosmetic concerns.",
   },
   {
     id: 4,
@@ -31,8 +37,9 @@ const doctors = [
     speciality: "General Physician",
     experience: "35 years Experience",
     image: doctor4,
+    description:
+      "Experienced in diagnosing and managing a wide range of medical conditions.",
   },
-
 ];
 
 export default doctors;

@@ -40,7 +40,7 @@ const HeroSection = () => {
                             <Feature icon={<ShieldCheck size={20} />} text="Certified Specialists" />
                             <Feature icon={<Clock size={20} />} text="24/7 Availability" />
                             <Feature icon={<ShieldCheck size={20} />} text="Safe & Secure" />
-                            <Feature icon={<Users size={20} />} text="100% Doctors" />
+                            <Feature icon={<Users size={20} />} text="100% Doctors Available" />
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 mt-8">
                             <button className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full shadow-lg transition duration-300">
