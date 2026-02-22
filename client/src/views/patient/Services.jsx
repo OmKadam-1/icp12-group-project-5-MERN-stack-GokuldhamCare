@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import ServiceCard from "../../components/ServiceCard";
 import NavbarPatient from "../../components/NavbarPatient.jsx";
+import Footer from "../../components/Footer.jsx";
 
 function AllServices() {
   const [services, setServices] = useState([]);
@@ -28,16 +29,17 @@ function AllServices() {
   }, []);
 
   return (
-    <div  className="bg-gradient-to-r from-slate-100 to-teal-50   min-h-screen">
+    <div  className="bg-gradient-to-r from-slate-100 to-teal-50   min-h-screen ">
       <NavbarPatient />
 
-      <div className="flex flex-wrap justify-center mt-10 gap-8 px-6">
+      <div className="flex flex-wrap justify-center  gap-9  p-15">
         {services.map((serviceItem, index) => {
           return <ServiceCard key={index} {...serviceItem} />;
         })}
       </div>
 
       <Toaster />
+       <Footer />
     </div>
   );
 }
