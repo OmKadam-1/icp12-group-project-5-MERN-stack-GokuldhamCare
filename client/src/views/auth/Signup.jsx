@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { setPageTitle } from "../../utils.jsx";
+import Input from "../../components/Input.jsx";
+import Button from "../../components/Button.jsx";
 
 function Signup() {
   const [form, setForm] = useState({
@@ -36,23 +38,20 @@ function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r grey-[500]">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
 
-      <Toaster/>
+      <Toaster />
 
-     
-      <div className="bg-white/70 backdrop-blur-md shadow-2xl rounded-3xl p-10 w-[400px] text-center">
 
-       
+      <div className="bg-white shadow-2xl rounded-3xl p-10 w-[400px] text-center">
+
+
         <h1 className="text-3xl font-bold text-green-700 mb-2">
-          Patient Registration
+          Create Account
         </h1>
-        <p className="text-gray-600 mb-6">
-          Create your account to book appointments
-        </p>
 
-       
-        <input
+
+        <Input
           type="text"
           name="name"
           placeholder="Enter Your Name"
@@ -61,35 +60,34 @@ function Signup() {
           className="w-full mb-4 px-5 py-3 rounded-full border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
         />
 
-        
-        <input
+
+        <Input
           type="email"
           name="email"
           placeholder="Enter Your Email"
           value={form.email}
           onChange={handleChange}
-          className="w-full mb-4 px-5 py-3 rounded-full border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
+
         />
 
-       
-        <input
+
+        <Input
           type="password"
           name="password"
           placeholder="Enter Your Password"
           value={form.password}
           onChange={handleChange}
-          className="w-full mb-6 px-5 py-3 rounded-full border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
         />
 
-        
-        <button
-          onClick={handleSubmit}
-          className="w-full cursor-pointer bg-green-600 text-white py-3 rounded-full font-semibold hover:bg-green-700 transition duration-300"
-        >
-          Sign Up
-        </button>
 
-       
+        <Button
+          title="Sign Up"
+          size="medium"
+          variant="primary"
+          onClick={handleSubmit}
+        />
+
+
         <p className="text-sm mt-4">
           Already have an account?{" "}
           <span
