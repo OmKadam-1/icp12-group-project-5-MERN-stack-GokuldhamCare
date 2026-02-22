@@ -12,7 +12,7 @@ const NavbarPatient = () => {
 
   const loggedIn = isUserLoggedIn();
 
-  const role = localStorage.getItem("role") || "User";
+  const role = localStorage.getItem("name") || "User";
 
   const navItems = [
     { name: "Home", path: "/" },
