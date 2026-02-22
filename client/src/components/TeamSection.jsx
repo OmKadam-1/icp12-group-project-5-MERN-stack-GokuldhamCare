@@ -39,7 +39,7 @@ const TeamSection = () => {
                             <div className="inline-block border border-emerald-400 text-sm px-4 py-1 rounded-full mb-4">
                                 {doctor.experience}
                             </div>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-gray-900 text-sm ">
                                 {doctor.description}
                             </p>
                         </div>
