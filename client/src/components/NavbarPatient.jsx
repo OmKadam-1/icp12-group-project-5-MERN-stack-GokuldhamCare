@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
 import Button from "./Button";
+import Avatar from "../components/Avatar.jsx"
 import { isUserLoggedIn, logoutUser } from "../utils";
 import Avatar from "./Avatar";
 
