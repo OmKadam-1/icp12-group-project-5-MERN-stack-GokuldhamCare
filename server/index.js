@@ -141,56 +141,57 @@ app.get("/api/services", async (req, res) => {
 
 
 app.post("/api/contact", authenticateJWT, authorizeRole("PATIENT"), async (req, res) => {
-    const { name, email, phone, address, message } = req.body;
+  const { name, email, phone, address, message } = req.body;
 
-    const newContact = new Contact({
-      name,
-      email,
-      phone,
-      address,
-      message,
-      createdBy: req.body.id,
-    });
-
-    try {
-      const saveContact = await newContact.save();
-      return res.json({
-        success: true,
-        message: " Your response send  successfully",
-        data: saveContact,
-      });
-    } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: "Failed to send your response",
-        error: error.message,
-      });
-    }
+  const newContact = new Contact({
+    name,
+    email,
+    phone,
+    address,
+    message,
+    createdBy: req.user.id,
   });
 
-app.get("/api/contact" , async (req, res) => {
-   try {
-    const contct = await Contact.find().populate("createdBy", "email");
-
+  try {
+    const saveContact = await newContact.save();
     return res.json({
       success: true,
-      message: "Contact fetched successfully",
-      data: contct,
+      message: " Your response send  successfully",
+      data: saveContact,
     });
   } catch (error) {
-    console.error("Error fetching contct:", error);
     return res.status(500).json({
       success: false,
-      message: "Failed to fetch contct",
+      message: "Failed to send your response",
       error: error.message,
     });
   }
-})
+});
+
+app.get("/api/contact", authenticateJWT,
+  authorizeRole("DOCTOR"), async (req, res) => {
+    try {
+      const contct = await Contact.find().populate("createdBy", "email");
+
+      return res.json({
+        success: true,
+        message: "Contact fetched successfully",
+        data: contct,
+      });
+    } catch (error) {
+      console.error("Error fetching contct:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Failed to fetch contct",
+        error: error.message,
+      });
+    }
+  })
 
 
 
 
-  
+
 
 
 

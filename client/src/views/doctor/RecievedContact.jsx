@@ -8,7 +8,14 @@ function RecievdContact() {
 
   const fetchContact = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/contact");
+      const response = await axios.get("http://localhost:8080/api/contact" , 
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        
 
       if (response.data.success) {
         toast.success(response.data.message);
@@ -21,9 +28,9 @@ function RecievdContact() {
       toast.error("Failed to fetch contact");
     }
   };
-  useEffect(() => {
-    fetchContact();
-  }, []);
+  // useEffect(() => {
+  //   fetchContact();
+  // }, []);
 
   return (
     <div>
@@ -52,6 +59,7 @@ function RecievdContact() {
             <p>
               <b>Message:</b> {cont.message}
             </p>
+
           </div>
         ))}
       </div>

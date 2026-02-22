@@ -19,22 +19,18 @@ function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const sendMessage = async () => {
+  const sendMessage = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post(
         "http://localhost:8080/api/contact",
         form,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        },
       );
 
       console.log(response.data);
 
-      if (res.data.success) {
-        toast.success(res.data.message);
+      if (response.data.success) {
+        toast.success(response.data.message);
 
         setForm({
           name: "",
@@ -44,7 +40,7 @@ function Contact() {
           message: "",
         });
       } else {
-        toast.error(res.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
       console.error(error);
