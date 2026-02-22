@@ -67,6 +67,10 @@ const NavbarAdmin = () => {
 
       
         <div className="hidden lg:flex items-center gap-3">
+           <span className="text-gray-700 font-medium">
+                Welcome, {role}
+              </span>
+
           <Avatar name={role} size="medium" />
           <Button
             title="Logout"
@@ -113,6 +117,9 @@ const NavbarAdmin = () => {
 
       
           <div className="flex items-center justify-between pt-3 border-t">
+              <span className="text-gray-700 font-medium">
+                Welcome, {role}
+              </span>
             <Avatar name={role} size="small" />
             <Button
               title="Logout"
@@ -129,5 +136,6 @@ const NavbarAdmin = () => {
     </div>
   );
 };
+
 
 export default NavbarAdmin;

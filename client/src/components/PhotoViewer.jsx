@@ -24,18 +24,20 @@ function PhotoPreview({ imgUrl, show, onClose }) {
 function PhotoViewer({ imgUrl, index, onDelete, showDelete = false }) {
   const [showPreview, setShowPreview] = useState(false);
   return (
-    <div className="flex items-center justify-center relative w-fit shadow-md rounded-md">
+    <div >
       <img
         key={index}
         src={imgUrl}
         alt={`Tour Photo ${index + 1}`}
-        className="w-25 h-auto mt-2 rounded-md object-cover mx-2 cursor-pointer"
+        className="w-full h-auto rounded-md object-cover cursor-pointer"
         onClick={() => setShowPreview(true)}
       />
 
       {showDelete ? (
-        <Trash2 className="absolute right-2 top-2 h-4 w-4 text-red-500 cursor-pointer"
-        onClick ={ () => onDelete(imgUrl)} />
+        <Trash2
+          className="absolute right-2 top-2 h-4 w-4 text-red-500 cursor-pointer"
+          onClick={() => onDelete(imgUrl)}
+        />
       ) : null}
 
       <PhotoPreview

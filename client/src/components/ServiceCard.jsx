@@ -1,21 +1,23 @@
 import PhotoViewer from "./PhotoViewer";
 
-function ServiceCard({
-  serviceImg,
-  serviceName,
-  department,
-  description,
-}) {
+function ServiceCard({ serviceImg, serviceName, department, description }) {
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 w-full max-w-md mx-auto">
-      <div className="flex flex-wrap gap-2">
+    <div className=" bg-white  w-[300px] rounded-2xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2">
+      <div>
         {serviceImg.map((imgUrl, index) => (
           <PhotoViewer key={index} imgUrl={imgUrl} index={index} />
         ))}
       </div>
-      <h2 className="text-2xl font-bold mb-2">{serviceName}</h2>
-      <p className="text-gray-600 mb-4">{department}</p>
-      <p className="text-gray-800 mb-4">{description}</p>
+
+      <div className="p-4">
+        <h2 className="text-xl font-semibold text-blue-700 mb-1">
+          {serviceName}
+        </h2>
+
+        <p className="text-sm text-gray-500 mb-2">Department: {department}</p>
+
+        <p className="text-gray-700 text-sm leading-relaxed">{description}</p>
+      </div>
     </div>
   );
 }

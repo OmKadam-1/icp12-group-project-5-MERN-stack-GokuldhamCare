@@ -17,7 +17,7 @@ function Login() {
   useEffect(() => {
     setPageTitle("Login");
 
-    // If already logged in, redirect automatically
+
     if (isUserLoggedIn()) {
       const role = localStorage.getItem("role");
 
@@ -40,30 +40,31 @@ function Login() {
         form,
       );
 
-      // Save authentication data
+
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("userId", res.data.userId);
+      localStorage.setItem("name", res.data.name);
 
-      toast.success("Login Successful ✅");
+      toast.success("Login Successful ");
 
-      // Role-based redirect
+
       if (res.data.role === "DOCTOR") {
         navigate("/doctor/dashboard");
       } else if (res.data.role === "PATIENT") {
         navigate("/");
       }
     } catch (error) {
-      toast.error(error.response?.data?.error || "Login Failed ❌");
+      toast.error(error.response?.data?.error || "Login Failed ");
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <Toaster position="top-right" />
+    <div className="min-h-screen flex items-center justify-center  bg-gray-100 ">
+      <Toaster />
 
-      <div className="bg-white p-6 rounded shadow-md w-80">
-        <h2 className="text-xl font-bold mb-4 text-center">🔐 Login</h2>
+      <div className="bg-white/70 backdrop-blur-md shadow-2xl rounded-3xl p-10 w-[400px] text-center">
+        <h2 className="text-3xl font-bold text-green-700 mb-2"> Login</h2>
 
         <Input
           type="email"
@@ -71,6 +72,7 @@ function Login() {
           name="email"
           value={form.email}
           onChange={handleChange}
+
         />
 
         <Input
@@ -79,6 +81,7 @@ function Login() {
           name="password"
           value={form.password}
           onChange={handleChange}
+
         />
 
         <Button
@@ -86,7 +89,17 @@ function Login() {
           size="medium"
           variant="primary"
           onClick={handleSubmit}
+
         />
+        <p className="text-sm mt-4">
+          Don’t have an account?{" "}
+          <span
+            onClick={() => navigate("/signup")}
+            className="text-green-700 font-medium cursor-pointer hover:underline"
+          >
+            Sign Up
+          </span>
+        </p>
       </div>
     </div>
   );

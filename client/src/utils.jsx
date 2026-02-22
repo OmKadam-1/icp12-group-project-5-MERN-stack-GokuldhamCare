@@ -17,6 +17,7 @@ const getUserData = () => {
   return {
     role: localStorage.getItem("role"),
     userId: localStorage.getItem("userId"),
+     name: localStorage.getItem("name"),
   };
 };
 

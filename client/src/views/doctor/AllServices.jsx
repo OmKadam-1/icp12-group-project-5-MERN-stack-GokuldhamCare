@@ -11,8 +11,7 @@ function AllServices() {
 
   const fetchServices = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/services", 
-      );
+      const response = await axios.get("http://localhost:8080/api/services");
 
       if (response.data.success) {
         toast.success(response.data.message);
@@ -28,7 +27,7 @@ function AllServices() {
 
   useEffect(() => {
     fetchServices();
-  }, []); 
+  }, []);
 
   return (
     <div>
@@ -43,9 +42,11 @@ function AllServices() {
           />
         </Link>
 
-        {services.map((serviceItem, index) => {
-          return <ServiceCard key={index} {...serviceItem} />;
-        })}
+        <div className="flex flex-wrap gap-6 justify-center">
+          {services.map((serviceItem, index) => {
+            return <ServiceCard key={index} {...serviceItem} />;
+          })}
+        </div>
       </div>
 
       <Toaster />
