@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import toast, { Toaster } from "react-hot-toast";
+import Footer from "../../components/Footer";
 
 function RecievdContact() {
   const [contact, setContact] = useState([]);
@@ -56,6 +57,8 @@ function RecievdContact() {
         ))}
       </div>
       <Toaster />
+             <Footer />
+
     </div>
   );
 }

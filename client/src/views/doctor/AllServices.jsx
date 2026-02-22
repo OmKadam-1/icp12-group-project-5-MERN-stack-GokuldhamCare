@@ -5,6 +5,7 @@ import addService from "../../assets/addService.png";
 import { Link } from "react-router";
 import ServiceCard from "../../components/ServiceCard";
 import NavbarAdmin from "../../components/NavbarAdmin.jsx";
+import Footer from "../../components/Footer.jsx";
 
 function AllServices() {
   const [services, setServices] = useState([]);
@@ -50,6 +51,8 @@ function AllServices() {
       </div>
 
       <Toaster />
+             <Footer />
+
     </div>
   );
 }
