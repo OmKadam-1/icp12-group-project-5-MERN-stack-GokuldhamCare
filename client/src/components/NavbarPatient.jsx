@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
 import Button from "./Button";
-import Avatar from "../components/Avatar.jsx"
+
 import { isUserLoggedIn, logoutUser } from "../utils";
 import Avatar from "./Avatar";
 
@@ -84,6 +84,10 @@ const NavbarPatient = () => {
           
           {loggedIn && (
             <div className="flex items-center gap-3">
+               <span className="text-gray-700 font-medium">
+                Hello, {role}
+              </span>
+
               <Avatar name={role} size="medium" />
               <Button
                 title="Logout"
