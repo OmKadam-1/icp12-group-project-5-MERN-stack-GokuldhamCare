@@ -7,7 +7,7 @@ function Avatar({ name, size = "medium" }) {
 
   return (
     <span
-      className={`bg-black text-white flex items-center justify-center rounded-full mr-2 ${sizeClasses[size]}`}
+      className={`bg-green-500 text-black flex items-center justify-center rounded-full mr-2 ${sizeClasses[size]}`}
     >
       {name[0].toUpperCase()}
     </span>
