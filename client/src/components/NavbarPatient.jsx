@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
 import Button from "./Button";
+import Avatar from "../components/Avatar.jsx"
 import { isUserLoggedIn, logoutUser } from "../utils";
 
 const NavbarPatient = () => {
@@ -11,7 +12,7 @@ const NavbarPatient = () => {
 
   const loggedIn = isUserLoggedIn();
 
-  const role = localStorage.getItem("role") || "User";
+  const role = localStorage.getItem("name") || "User";
 
   const navItems = [
     { name: "Home", path: "/" },
