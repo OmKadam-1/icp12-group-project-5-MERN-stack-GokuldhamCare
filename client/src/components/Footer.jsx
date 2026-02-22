@@ -123,19 +123,41 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-xl font-bold mb-4">Follow Us</h3>
+  <h3 className="text-xl font-bold mb-4">Follow Us</h3>
 
-          <div className="flex gap-4">
-            {socialIcons.map((Icon, index) => (
-              <div
-                key={index}
-                className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow hover:bg-green-600 hover:text-white transition cursor-pointer"
-              >
-                <Icon size={18} />
-              </div>
-            ))}
-          </div>
-        </div>
+  <div className="flex gap-4 mb-4">
+    {socialIcons.map((Icon, index) => (
+      <div
+        key={index}
+        className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow hover:bg-green-600 hover:text-white transition cursor-pointer"
+      >
+        <Icon size={18} />
+      </div>
+    ))}
+  </div>
+
+  <div className="mt-4">
+  <Link
+    to="/terms"
+    className="flex items-center gap-3 font-semibold group"
+  >
+    <span className="w-8 h-8 flex items-center justify-center bg-green-200 rounded-full group-hover:bg-green-600 group-hover:text-white transition">
+      <ArrowRight size={16} />
+    </span>
+
+    <span className="group-hover:text-green-600 transition">
+      Terms & Conditions
+    </span>
+  </Link>
+
+  <p className="text-sm text-green-700 mt-3 leading-relaxed">
+    By using our healthcare services, you agree to follow our medical 
+    guidelines and policies. Please read our terms carefully before 
+    booking any consultation or service.
+  </p>
+</div>
+</div>
+        
       </div>
       <div className="text-center border-t border-green-300 mt-10 pt-4 text-sm">
         <p>© 2026 HealthMatrix</p>
