@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
 import Button from "./Button";
 import { isUserLoggedIn, logoutUser } from "../utils";
+import Avatar from "./Avatar";
 
 const NavbarPatient = () => {
   const location = useLocation();
