@@ -19,11 +19,11 @@ import Terms from "../views/Terms.jsx";
 
 const Footer = () => {
   const socialIcons = [
-    FaFacebookF,
-    FaTwitter,
-    FaInstagram,
-    FaLinkedinIn,
-    FaYoutube,
+    FaFacebookF, 
+     FaTwitter, 
+   FaInstagram, 
+    FaLinkedinIn, 
+    FaYoutube, 
   ];
 
   const quickLinks = [
