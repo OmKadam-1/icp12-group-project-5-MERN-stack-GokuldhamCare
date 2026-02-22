@@ -17,7 +17,7 @@ const TeamSection = () => {
 
             <div className="flex flex-wrap justify-center gap-8 px-6">
 
-                {doctors.map((doctor) => ( 
+                {doctors.map((doctor) => (
                     <div
                         key={doctor.id}
                         className="w-[280px] bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2">
@@ -39,13 +39,9 @@ const TeamSection = () => {
                             <div className="inline-block border border-emerald-400 text-sm px-4 py-1 rounded-full mb-4">
                                 {doctor.experience}
                             </div>
-                            <Button
-                                title="» Book Now"
-                                size="medium"
-                                variant="secondary"
-                            />
-
-
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                {doctor.description}
+                            </p>
                         </div>
                     </div>
                 ))}
