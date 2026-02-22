@@ -28,10 +28,10 @@ function AllServices() {
   }, []);
 
   return (
-    <div>
+    <div  className="bg-gradient-to-r from-slate-100 to-teal-50   min-h-screen">
       <NavbarPatient />
 
-      <div className="w-2/3 block mx-auto mt-10">
+      <div className="flex flex-wrap justify-center mt-10 gap-8 px-6">
         {services.map((serviceItem, index) => {
           return <ServiceCard key={index} {...serviceItem} />;
         })}

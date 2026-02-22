@@ -55,7 +55,7 @@ function BookAppointment() {
     } catch (error) {
       console.error(error);
       toast.error("You have to login first");
-    }
+    } 
   };
 
   return (
