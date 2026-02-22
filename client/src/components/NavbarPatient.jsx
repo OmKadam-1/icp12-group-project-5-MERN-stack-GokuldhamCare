@@ -65,22 +65,41 @@ const NavbarPatient = () => {
         </div>
 
         {/* Right Side (Desktop) */}
-        <div className="hidden lg:flex items-center gap-4">
-          <Link
-            to="/login"
-            className="flex items-center gap-2 border-2 border-green-600 text-green-600 px-5 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition"
-          >
-            Doctor/Patient
-          </Link>
+       <div className="hidden lg:flex items-center gap-4">
 
-          <Link
-            to="/signup"
-            className="bg-green-500 text-white px-6 py-2 rounded-full font-medium shadow-md hover:bg-green-600 transition"
-          >
-            Registration
-          </Link>
-        </div>
+  {/* Show Login & Register if NOT logged in */}
+  {!loggedIn && (
+    <>
+      <Link
+        to="/login"
+        className="flex items-center gap-2 border-2 border-green-600 text-green-600 px-5 py-2 rounded-full font-medium hover:bg-green-600 hover:text-white transition"
+      >
+        Doctor/Patient
+      </Link>
 
+      <Link
+        to="/signup"
+        className="bg-green-500 text-white px-6 py-2 rounded-full font-medium shadow-md hover:bg-green-600 transition"
+      >
+        Registration
+      </Link>
+    </>
+  )}
+
+  {/* Show Avatar + Logout if logged in */}
+  {loggedIn && (
+    <div className="flex items-center gap-3">
+      <Avatar name={role} size="medium" />
+      <Button
+        title="Logout"
+        size="medium"
+        variant="secondary"
+        onClick={logoutUser}
+      />
+    </div>
+  )}
+
+</div>
         <div className="lg:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
