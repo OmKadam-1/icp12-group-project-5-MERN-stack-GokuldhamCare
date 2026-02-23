@@ -38,7 +38,7 @@ function AllServices() {
         })}
       </div>
 
-      <Toaster />
+      <Toaster /> 
        <Footer />
     </div>
   );
