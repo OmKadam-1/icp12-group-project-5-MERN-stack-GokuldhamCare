@@ -16,7 +16,7 @@ const NavbarPatient = () => {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Doctors", path: "/doctors" },
+    { name: "HealthTips", path: "/patient/health-tips" },
     { name: "Services", path: "/service/viewservices" },
     { name: "Appointments", path: "/patient/book" },
     { name: "Contact", path: "/patient/contact" },

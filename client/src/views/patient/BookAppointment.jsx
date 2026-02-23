@@ -64,7 +64,7 @@ function BookAppointment() {
 
       <div className="max-w-xl mx-auto p-6 shadow-lg rounded-xl mt-10 bg-white">
         <h2 className="text-xl font-bold text-center mb-4">
-          🏥 Book Appointment
+           Book Appointment
         </h2>
 
         <Input

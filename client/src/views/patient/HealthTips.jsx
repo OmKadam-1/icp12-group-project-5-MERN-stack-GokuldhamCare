@@ -31,6 +31,7 @@ function HealthTips() {
       <TipsList tips={filteredTips} />
 
     </div>
+    <Footer/>
 </>
   )
 }
