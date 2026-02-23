@@ -43,50 +43,50 @@ function Signup() {
       <Toaster />
 
 
-      <div className="bg-white shadow-2xl rounded-3xl p-10 w-[400px] text-center">
+      <div className="bg-white shadow-xl rounded-2xl p-10 w-full max-w-md min-h-[400px] text-center flex flex-col">
 
 
         <h1 className="text-3xl font-bold text-green-700 mb-2">
           Create Account
         </h1>
 
-
-        <Input
-          type="text"
-          name="name"
-          placeholder="Enter Your Name"
-          value={form.name}
-          onChange={handleChange}
-          className="w-full mb-4 px-5 py-3 rounded-full border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
-        />
-
-
-        <Input
-          type="email"
-          name="email"
-          placeholder="Enter Your Email"
-          value={form.email}
-          onChange={handleChange}
-
-        />
+        <div className="mt-8 space-y-4">
+          <Input
+            type="text"
+            name="name"
+            placeholder="Enter Your Name"
+            value={form.name}
+            onChange={handleChange}
+           
+          />
 
 
-        <Input
-          type="password"
-          name="password"
-          placeholder="Enter Your Password"
-          value={form.password}
-          onChange={handleChange}
-        />
+          <Input
+            type="email"
+            name="email"
+            placeholder="Enter Your Email"
+            value={form.email}
+            onChange={handleChange}
+
+          />
 
 
-        <Button
-          title="Sign Up"
-          size="medium"
-          variant="primary"
-          onClick={handleSubmit}
-        />
+          <Input
+            type="password"
+            name="password"
+            placeholder="Enter Your Password"
+            value={form.password}
+            onChange={handleChange}
+          />
 
+
+          <Button
+            title="Sign Up"
+            size="medium"
+            variant="primary"
+            onClick={handleSubmit}
+          />
+        </div>
 
         <p className="text-sm mt-4">
           Already have an account?{" "}

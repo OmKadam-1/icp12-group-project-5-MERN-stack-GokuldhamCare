@@ -1,8 +1,8 @@
 function Button({ title, size = "small", variant = "primary", onClick }) {
   const SIZE_CLASSES = {
     small: "px-2 py-1 text-xs mx-2",
-    medium: "px-4 py-2 text-sm mx-3",
-    large: "px-6 py-2 text-lg mx-4",
+    medium: "px-4 py-2 text-sm mx-3 mt-4",
+    large: "px-6 py-2 text-lg mx-4 ",
   };
 
   const VARIANTS_CLASSES = {
