@@ -71,7 +71,7 @@ function Login() {
       
 
       <div className="w-[400px] mx-auto p-6  min-h-[400px] shadow-xl   rounded-xl bg-white border border-green-300 flex flex-col items-center justify-center  ">
-        <h2 className="text-3xl font-bold text-green-700 mb-7"> Login</h2>
+        <h2 className="text-3xl font-semibold text-green-700 mb-7"> Login</h2>
         
           <Input
             type="email"
