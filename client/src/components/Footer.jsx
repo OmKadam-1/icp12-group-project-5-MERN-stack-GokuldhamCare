@@ -19,13 +19,11 @@ import Terms from "../views/Terms.jsx";
 
 const Footer = () => {
   const socialIcons = [
-    FaFacebookF, 
-     FaTwitter, 
-   FaInstagram, 
-    FaLinkedinIn, 
-    FaYoutube, 
+    { Icon: FaFacebookF, link: "https://facebook.com" },
+    { Icon: FaTwitter, link: "https://twitter.com" },
+    { Icon: FaInstagram, link: "https://instagram.com" },
+    { Icon: FaYoutube, link: "https://youtube.com" },
   ];
-
   const quickLinks = [
     { name: "Home", path: "/" },
     { name: "Doctors", path: "/doctors" },
@@ -127,13 +125,16 @@ const Footer = () => {
           <h3 className="text-xl font-bold mb-4">Follow Us</h3>
 
           <div className="flex gap-4 mb-4">
-            {socialIcons.map((Icon, index) => (
-              <div
+            {socialIcons.map(({ Icon, link }, index) => (
+              <a
                 key={index}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow hover:bg-green-600 hover:text-white transition cursor-pointer"
               >
                 <Icon size={18} />
-              </div>
+              </a>
             ))}
           </div>
 
