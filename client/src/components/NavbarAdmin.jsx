@@ -22,7 +22,11 @@ const NavbarAdmin = () => {
 
   const navItems = [
     { name: "Dashboard", path: "/doctor/dashboard", icon: LayoutDashboard },
-    { name: "Appointments", path: "/doctor/manage-appointments", icon: Calendar },
+    {
+      name: "Appointments",
+      path: "/doctor/manage-appointments",
+      icon: Calendar,
+    },
     { name: "All Service", path: "/service/allservice", icon: PlusSquare },
     { name: "Inbox", path: "/doctor/contact", icon: CalendarCheck },
   ];
@@ -30,7 +34,6 @@ const NavbarAdmin = () => {
   return (
     <div className="relative w-full bg-[#e6f4ef] px-6 py-4">
       <div className="flex items-center justify-between">
-
         <div className="flex items-center gap-3">
           <img src={Logo} alt="logo" className="w-12 h-12" />
           <div>
@@ -65,13 +68,9 @@ const NavbarAdmin = () => {
           })}
         </div>
 
-      
         <div className="hidden lg:flex items-center gap-3">
-           <span className="text-gray-700 font-medium">
-                Welcome, {role}
-              </span>
-
           <Avatar name={role} size="medium" />
+          <span className="text-gray-700 font-medium">Welcome, {role}</span>
           <Button
             title="Logout"
             size="medium"
@@ -80,7 +79,6 @@ const NavbarAdmin = () => {
           />
         </div>
 
-    
         <button
           className="lg:hidden text-green-700"
           onClick={() => setIsOpen(!isOpen)}
@@ -89,7 +87,6 @@ const NavbarAdmin = () => {
         </button>
       </div>
 
-    
       {isOpen && (
         <div className="lg:hidden mt-4 bg-white border border-green-200 rounded-xl shadow-md p-4 space-y-4">
           {navItems.map((item, index) => {
@@ -115,11 +112,8 @@ const NavbarAdmin = () => {
             );
           })}
 
-      
           <div className="flex items-center justify-between pt-3 border-t">
-              <span className="text-gray-700 font-medium">
-                Welcome, {role}
-              </span>
+            <span className="text-gray-700 font-medium">Welcome, {role}</span>
             <Avatar name={role} size="small" />
             <Button
               title="Logout"
@@ -136,6 +130,5 @@ const NavbarAdmin = () => {
     </div>
   );
 };
-
 
 export default NavbarAdmin;
