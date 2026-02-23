@@ -53,7 +53,7 @@ function BookAppointment() {
         toast.error(res.data.message);
       }
     } catch (error) {
-      console.error(error);
+      console.error(error); 
       toast.error("You have to login first");
     }
   };
@@ -63,9 +63,14 @@ function BookAppointment() {
       <NavbarPatient />
 
       <div className="min-h-[640px] flex items-center justify-center    ">
-        <div className="w-full max-w-2xl   mx-auto p-6  min-h-[400px] shadow-xl   rounded-xl bg-white flex flex-col items-center justify-center   ">
+        <div className="w-full max-w-2xl   mx-auto p-6  min-h-[400px] shadow-xl   rounded-xl bg-white border border-green-300 flex flex-col items-center justify-center   ">
+
           <p className="text-xl md:text-2xl  text-center mb-4  font-semibold flex flex-row   ">
-            <img src={Appointment} alt="Add New Service" className=" h-9 mr-1" />
+            <img
+              src={Appointment}
+              alt="Add New Appointment"
+              className=" h-9 mr-1"
+            />
             Book Your <span className="text-green-700 ml-2"> Appointment</span>
           </p>
 
@@ -117,6 +122,7 @@ function BookAppointment() {
               onClick={addAppointment}
             />
           </div>
+          
         </div>
       </div>
 
