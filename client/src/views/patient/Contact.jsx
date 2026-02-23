@@ -116,7 +116,10 @@ function Contact() {
             </div>
 
             <div className="w-full mt-5 rounded-2xl shadow-lg bg-gradient-to-r from-slate-100 to-teal-50  border border-green-300 p-2 flex flex-col items-center justify-center">
-              <p className="text-3xl md:text-4xl font-semibold mb-3"> Clinic Timing</p>
+              <p className="text-3xl md:text-4xl font-semibold mb-3">
+                {" "}
+                Clinic Timing
+              </p>
               <p className="text-sm  italic px-7 py-1">
                 {" "}
                 Mon - Sat: 9:00 AM - 6:00 PM
@@ -125,14 +128,11 @@ function Contact() {
           </div>
 
           <div>
-            <div
-              className="w-full rounded-2xl shadow-lg bg-white p-2    border border-green-300 flex flex-col items-center justify-center"
-            >
+            <div className="w-full rounded-2xl shadow-lg bg-white p-2    border border-green-300 flex flex-col items-center justify-center">
               <p className="text-3xl md:text-4xl font-semibold mb-3">
                 Visit Our <span className="text-green-700 ">Clinic</span>
               </p>
 
-             
               <h1 className="font-bold md:font-semibold text-lg">
                 Hadapsar, Pune, Maharashtra
               </h1>
@@ -142,14 +142,14 @@ function Contact() {
               </h1>
             </div>
 
-
             <iframe
               title="map"
               className="w-full min-h-[300px] rounded-xl shadow-xl my-7
              border-2 border-solid border-green-600 hover:shadoow-xl/30 hover:shadow-green-600 duration-400"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30584.90662048613!2d73.91881922148384!3d18.497252885849324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2e9ff81f1aae9%3A0x2560343555ac8b53!2sHadapsar%2C%20Pune%2C%20Maharashtra!5e1!3m2!1sen!2sin!4v1771491556635!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.542403164139!2d75.33862877376133!3d19.90153532554109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdba3bd33a3bb1f%3A0x510df799a614901!2sMatrix%20Clinic!5e0!3m2!1sen!2sin!4v1771873449248!5m2!1sen!2sin"
             />
 
+          
           </div>
         </div>
       </div>
