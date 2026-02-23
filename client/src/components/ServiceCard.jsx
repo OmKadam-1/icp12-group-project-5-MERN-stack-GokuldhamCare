@@ -1,4 +1,5 @@
 import PhotoViewer from "./PhotoViewer";
+import Servicelogo from "../assets/servicelogo.png";
 
 function ServiceCard({ serviceImg, serviceName, department, description }) {
   return (
@@ -9,12 +10,20 @@ function ServiceCard({ serviceImg, serviceName, department, description }) {
         ))}
       </div>
 
-      <div className="p-4">
-        <h2 className="text-xl font-semibold">
+      <div className="p-4 ">
+        <h2
+          className="text-xl flex
+         font-semibold mb-2    "
+        >
+          {" "}
+          <img src={Servicelogo} alt="Add New Service" className=" h-6 mt-1 mr-1 " />
           {serviceName}
         </h2>
 
-        <p className="text-sm text-gray-500 mb-2">Department: {department}</p>
+        <div  className="inline-block border border-emerald-400 text-sm px-4 py-1 rounded-full mb-2">
+          {" "}
+          {department}
+        </div>
 
         <p className="text-gray-700 text-sm leading-relaxed">{description}</p>
       </div>

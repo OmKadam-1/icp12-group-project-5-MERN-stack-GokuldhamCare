@@ -29,7 +29,7 @@ function PhotoViewer({ imgUrl, index, onDelete, showDelete = false }) {
         key={index}
         src={imgUrl}
         alt={`Tour Photo ${index + 1}`}
-        className="w-full h-[220px] rounded-md object-cover cursor-pointer"
+        className="w-full h-[220px] rounded-t-2xl object-cover cursor-pointer"
         onClick={() => setShowPreview(true)}
       />
 
