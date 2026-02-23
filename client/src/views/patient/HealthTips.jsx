@@ -1,7 +1,7 @@
 import { useState } from "react"
-import tipsData from "../tipsData"
-import TipsList from "../TipsList"
-import CategoryFilter from "../CategoryFilter"
+import tipsData from "../../configs/tipsData"
+import TipsList from "./TipsList"
+import CategoryFilter from "./CategoryFilter"
 
 function HealthTips() {
 
