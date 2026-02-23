@@ -33,7 +33,7 @@ function BookAppointment() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       console.log(res.data);
@@ -51,20 +51,21 @@ function BookAppointment() {
       } else {
         toast.error(res.data.message);
       }
-
     } catch (error) {
       console.error(error);
       toast.error("You have to login first");
-    } 
+    }
   };
 
   return (
-    <div className="bg-gradient-to-r from-slate-100 to-teal-50">
+    <div className="bg-gradient-to-r from-slate-100 to-teal-50  min-h-screen    ">
       <NavbarPatient />
 
-      <div className="max-w-xl mx-auto p-6 shadow-lg rounded-xl mt-10 bg-white">
+      <div className="min-h-[640px] flex items-center justify-center    ">
+
+      <div className="w-full max-w-2xl   mx-auto p-6  min-h-[400px] shadow-xl   rounded-xl bg-white flex flex-col items-center justify-center   ">
         <h2 className="text-xl font-bold text-center mb-4">
-           Book Appointment
+          Book Your Appointment Now
         </h2>
 
         <Input
@@ -74,7 +75,7 @@ function BookAppointment() {
           value={form.patientName}
           onChange={handleChange}
         />
- 
+
         <Input
           type="email"
           placeholder="Enter Your Email"
@@ -115,7 +116,7 @@ function BookAppointment() {
             onClick={addAppointment}
           />
         </div>
-      </div>
+      </div></div>
 
       <Toaster position="top" />
 
