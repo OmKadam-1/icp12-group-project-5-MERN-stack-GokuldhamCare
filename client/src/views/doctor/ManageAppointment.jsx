@@ -3,6 +3,8 @@ import axios from "axios";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import NavbarAdmin from "../../components/NavbarAdmin";
+import toast, { Toaster } from "react-hot-toast";
+
 
 function ManageAppointment() {
   const [appointments, setAppointments] = useState([]);
@@ -45,7 +47,7 @@ function ManageAppointment() {
     });
   };
 
-  // ✅ Approve Appointment
+  // Approve Appointment
   const approveAppointment = async (id) => {
     try {
       const { appointmentDate, appointmentTime } = timeData[id] || {};
@@ -60,14 +62,14 @@ function ManageAppointment() {
         }
       );
 
-      alert("Appointment Approved ✅");
+      toast.success("Appointment Approved ");
       fetchAppointments();
     } catch (error) {
-      alert("Error approving appointment ❌");
+      toast.error("Error approving appointment ");
     }
   };
 
-  // ❌ Reject Appointment
+  //  Reject Appointment
   const rejectAppointment = async (id) => {
     try {
       await axios.put(
@@ -80,10 +82,10 @@ function ManageAppointment() {
         }
       );
 
-      alert("Appointment Rejected ❌");
+      toast.error("Appointment Rejected ");
       fetchAppointments();
     } catch (error) {
-      alert("Error rejecting appointment ❌");
+      toast.error("Error rejecting appointment ");
     }
   };
 
@@ -92,7 +94,7 @@ function ManageAppointment() {
       <NavbarAdmin />
 
       <div className="p-6">
-        <h2 className="text-xl font-bold mb-4">📋 Manage Appointments</h2>
+        <h2 className="text-xl font-bold mb-4"> Manage Appointments</h2>
 
         {appointments.map((app) => (
           <div
@@ -140,6 +142,7 @@ function ManageAppointment() {
           </div>
         ))}
       </div>
+      <Toaster/>
     </div>
   );
 }
