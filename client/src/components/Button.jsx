@@ -6,7 +6,7 @@ function Button({ title, size = "small", variant = "primary", onClick }) {
   };
 
   const VARIANTS_CLASSES = {
-    primary: "bg-green-500  text-white font-medium hover:bg-green-600",
+    primary: "bg-green-500  text-white font-medium  hover:bg-green-600",
     secondary: "bg-green-500 text-white  font-medium hover:bg-green-600",
     tertiary: "bg-green-400 text-white hover:bg-green-600",
   };
