@@ -26,10 +26,10 @@ const Footer = () => {
   ];
   const quickLinks = [
     { name: "Home", path: "/" },
-    { name: "Doctors", path: "/doctors" },
-    { name: "Services", path: "/services" },
-    { name: "Contact", path: "/contact" },
-    { name: "Appointments", path: "/appointments" },
+    { name: "HealthTips", path: "/patient/health-tips" },
+    { name: "Services", path: "/service/viewservices" },
+    { name: "Appointments", path: "/patient/book" },
+    { name: "Contact", path: "/patient/contact" },
   ];
 
   return (
