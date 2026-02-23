@@ -5,6 +5,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { setPageTitle, isUserLoggedIn } from "../../utils.jsx";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import backicon from "./../../assets/back.png"
+import { Link } from "react-router";
 
 function Login() {
   const [form, setForm] = useState({
@@ -39,16 +41,12 @@ function Login() {
         "http://localhost:8080/api/auth/login",
         form,
       );
-
-
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("userId", res.data.userId);
       localStorage.setItem("name", res.data.name);
 
       toast.success("Login Successful ");
-
-
       if (res.data.role === "DOCTOR") {
         navigate("/doctor/dashboard");
       } else if (res.data.role === "PATIENT") {
@@ -60,38 +58,48 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center  bg-gray-100 ">
-      <Toaster />
+    <div className="bg-gradient-to-r from-slate-100 to-teal-50  min-h-screen   ">
+      <div className="min-h-[640px] flex items-center justify-center ">
 
-      <div className="bg-white/70 backdrop-blur-md shadow-2xl rounded-3xl p-10 w-[400px] text-center">
-        <h2 className="text-3xl font-bold text-green-700 mb-2"> Login</h2>
-
-        <Input
-          type="email"
-          placeholder="Enter Your Email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-
+      <Link to="/">
+        <img
+          src={backicon}
+          alt="Back"
+          className="fixed top-6 left-6 h-8 cursor-pointer hover:scale-110 transition duration-200"
         />
+      </Link>
+      
 
-        <Input
-          type="password"
-          placeholder="Enter Your Password"
-          name="password"
-          value={form.password}
-          onChange={handleChange}
+      <div className="w-[400px] mx-auto p-6  min-h-[400px] shadow-xl   rounded-xl bg-white border border-green-300 flex flex-col items-center justify-center  ">
+        <h2 className="text-3xl font-bold text-green-700 mb-7"> Login</h2>
+        
+          <Input
+            type="email"
+            placeholder="Enter Your Email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
 
-        />
+          />
 
-        <Button
-          title=" Login"
-          size="medium"
-          variant="primary"
-          onClick={handleSubmit}
+          <Input
+            type="password"
+            placeholder="Enter  Password"
+            name="password"
+            value={form.password}
+            onChange={handleChange}
 
-        />
-        <p className="text-sm mt-4">
+          />
+
+          <Button
+            title=" Login"
+            size="medium"
+            variant="primary"
+            onClick={handleSubmit}
+
+          />
+        
+        <p className="text-m mt-5">
           Don’t have an account?{" "}
           <span
             onClick={() => navigate("/signup")}
@@ -101,6 +109,8 @@ function Login() {
           </span>
         </p>
       </div>
+      </div>
+      <Toaster />
     </div>
   );
 }
