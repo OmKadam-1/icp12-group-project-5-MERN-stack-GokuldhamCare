@@ -2,6 +2,8 @@ import { useState } from "react"
 import tipsData from "../../configs/tipsData"
 import TipsList from "./TipsList"
 import CategoryFilter from "./CategoryFilter"
+import Footer from "../../components/Footer"
+import NavbarPatient from "../../components/NavbarPatient"
 
 function HealthTips() {
 
@@ -13,6 +15,8 @@ function HealthTips() {
       : tipsData.filter((tip) => tip.category === category)
 
   return (
+    <>
+    <NavbarPatient/>
 
     <div className="min-h-screen bg-gray-100 p-8">
 
@@ -27,7 +31,7 @@ function HealthTips() {
       <TipsList tips={filteredTips} />
 
     </div>
-
+</>
   )
 }
 
