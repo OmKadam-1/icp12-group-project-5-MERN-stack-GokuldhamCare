@@ -29,18 +29,21 @@ const client = new ImageKit({
 const createDoctor = async () => {
   try {
     const existingAdmin = await User.findOne({
-      email: process.env.DOCTOR_EMAIL
+      email: process.env.DOCTOR_EMAIL,
+      name: process.env.DOCTOR_NAME
     });
 
     if (existingAdmin) return;
 
     const hashedPassword = await bcrypt.hash(
       process.env.DOCTOR_PASSWORD,
+      
       10
     );
 
     await User.create({
       email: process.env.DOCTOR_EMAIL,
+      name: process.env.DOCTOR_NAME,
       password: hashedPassword,
       role: "DOCTOR"
     });

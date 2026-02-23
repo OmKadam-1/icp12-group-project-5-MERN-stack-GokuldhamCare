@@ -15,6 +15,7 @@ import AllServices from "./views/doctor/AllServices";
 import Services from "./views/patient/Services";
 import RecievdContact from "./views/doctor/RecievedContact";
 import Terms from "./views/Terms.jsx";
+import HealthTips from "./views/patient/HealthTips.jsx";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -24,6 +25,7 @@ root.render(
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/patient/book" element={<BookAppointment />} />
+      <Route path="/patient/health-tips" element={<HealthTips />} />
       <Route path="/patient/contact" element={<Contact />} />
       <Route path="/doctor/contact" element={<RecievdContact />} />
       <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
