@@ -10,6 +10,8 @@ import { postAppointment, getPatientAppointments, getDoctorAppointments, approve
 import { authenticateJWT, authorizeRole } from "./middlewares/authMiddleware.js";
 import Service from "./models/Service.js";
 import Contact from "./models/Contact.js";
+import { postSerivice, getService } from "./controllers/services.js";
+import { postContact , getContact } from "./controllers/contact.js";
 
 dotenv.config();
 
@@ -37,7 +39,7 @@ const createDoctor = async () => {
 
     const hashedPassword = await bcrypt.hash(
       process.env.DOCTOR_PASSWORD,
-      
+
       10
     );
 
@@ -93,102 +95,16 @@ app.put("/api/appointment/reject/:id", authenticateJWT,
   authorizeRole("DOCTOR"), rejectAppointment);
 
 // api for creating a service
-app.post("/api/services", authenticateJWT, authorizeRole("DOCTOR"), async (req, res) => {
-
-  const { serviceName, department, description, serviceImg } = req.body;
-
-  const newService = new Service({
-    serviceName,
-    department,
-    description,
-    serviceImg,
-    createdBy: req.user.id,
-  });
-
-  try {
-    const saveService = await newService.save();
-    return res.json({
-      success: true,
-      message: "Service created successfully",
-      data: saveService,
-    });
-  } catch (error) {
-    console.error("Error creating service:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Failed to create service",
-      error: error.message,
-    });
-  }
-});
+app.post("/api/services", authenticateJWT, authorizeRole("DOCTOR"), postSerivice);
 
 // api for fetching all services
-app.get("/api/services", async (req, res) => {
-  try {
-    const services = await Service.find().populate("createdBy", "email");
-
-    return res.json({
-      success: true,
-      message: "Services fetched successfully",
-      data: services,
-    });
-  } catch (error) {
-    console.error("Error fetching services:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Failed to fetch services",
-      error: error.message,
-    });
-  }
-});
+app.get("/api/services", getService);
 
 
-app.post("/api/contact", authenticateJWT, authorizeRole("PATIENT"), async (req, res) => {
-    const { name, email, phone, address, message } = req.body;
+app.post("/api/contact", authenticateJWT, authorizeRole("PATIENT"),
+postContact);
 
-    const newContact = new Contact({
-      name,
-      email,
-      phone,
-      address,
-      message,
-      createdBy: req.body.id,
-    });
-
-    try {
-      const saveContact = await newContact.save();
-      return res.json({
-        success: true,
-        message: " Your response send  successfully",
-        data: saveContact,
-      });
-    } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: "Failed to send your response",
-        error: error.message,
-      });
-    }
-  });
-
-app.get("/api/contact" , async (req, res) => {
-   try {
-    const contct = await Contact.find().populate("createdBy", "email");
-
-    return res.json({
-      success: true,
-      message: "Contact fetched successfully",
-      data: contct,
-    });
-  } catch (error) {
-    console.error("Error fetching contct:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Failed to fetch contct",
-      error: error.message,
-    });
-  }
-})
+app.get("/api/contact", getContact)
 
 
 app.listen(PORT, () => {
