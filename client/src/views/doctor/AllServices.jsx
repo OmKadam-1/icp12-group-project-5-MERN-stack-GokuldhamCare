@@ -31,28 +31,27 @@ function AllServices() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-slate-100 to-teal-50   min-h-screen ">
       <NavbarAdmin />
 
-      <div className="w-2/3 block mx-auto mt-10">
+     
         <Link to="/service/new">
           <img
             src={addService}
             alt="Add New Service"
-            className="fixed bottom-10 right-10 h-10 cursor-pointer"
+            className="fixed top-30 right-10 h-10 cursor-pointer"
           />
         </Link>
 
-        <div className="flex flex-wrap gap-6 justify-center">
+        <div className="flex flex-wrap justify-center  gap-9  p-15">
           {services.map((serviceItem, index) => {
             return <ServiceCard key={index} {...serviceItem} />;
           })}
         </div>
-      </div>
+    
 
       <Toaster />
-             <Footer />
-
+      <Footer />
     </div>
   );
 }
