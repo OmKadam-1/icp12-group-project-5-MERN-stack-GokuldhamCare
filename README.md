@@ -124,3 +124,9 @@ npm start
 
 - `server/models` - Models folder to store data in database
 
+---
+# Contributors 
+
+<a href="https://github.com/OmKadam-1/icp12-group-project-5-MERN-stack-HealthMatrix/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=OmKadam-1/icp12-group-project-5-MERN-stack-HealthMatrix" />
+</a>
