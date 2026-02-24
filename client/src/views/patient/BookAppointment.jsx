@@ -10,7 +10,6 @@ import Appointment from "../../assets/appointment.png";
 import MyAppointments from "../../assets/myappointment.png";
 import { Link } from "react-router";
 
-
 function BookAppointment() {
   const [form, setForm] = useState({
     patientName: "",
@@ -44,7 +43,6 @@ function BookAppointment() {
 
       if (res.data.success) {
         toast.success(res.data.message);
-        
 
         setForm({
           patientName: "",
@@ -55,10 +53,9 @@ function BookAppointment() {
         });
       } else {
         toast.error(res.data.message);
-        
       }
     } catch (error) {
-      console.error(error); 
+      console.error(error);
       toast.error("You have to login first");
     }
   };
@@ -67,17 +64,16 @@ function BookAppointment() {
     <div className="bg-gradient-to-r from-slate-100 to-teal-50  min-h-screen    ">
       <NavbarPatient />
 
-         <Link to="/patient/my-appointments">
-          <img
-            src={MyAppointments}
-            alt="MyAppointments"
-            className="fixed top-30 right-10 h-10 cursor-pointer"
-          />
-        </Link>
+      <Link to="/patient/my-appointments">
+        <img
+          src={MyAppointments}
+          alt="MyAppointments"
+          className="fixed top-30 right-10 h-10 cursor-pointer"
+        />
+      </Link>
 
       <div className="min-h-[640px] flex items-center justify-center    ">
         <div className="w-full max-w-2xl   mx-auto p-6  min-h-[400px] shadow-xl   rounded-xl bg-white border border-green-300 flex flex-col items-center justify-center   ">
-
           <p className="text-xl md:text-2xl  text-center mb-4  font-semibold flex flex-row   ">
             <img
               src={Appointment}
@@ -132,10 +128,9 @@ function BookAppointment() {
               title="Book Appointment"
               size="medium"
               variant="primary"
-              onClick={addAppointment} 
+              onClick={addAppointment}
             />
           </div>
-          
         </div>
       </div>
 

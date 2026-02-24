@@ -11,7 +11,7 @@ import { authenticateJWT, authorizeRole } from "./middlewares/authMiddleware.js"
 import Service from "./models/Service.js";
 import Contact from "./models/Contact.js";
 import { postSerivice, getService } from "./controllers/services.js";
-import { postContact , getContact } from "./controllers/contact.js";
+import { postContact, getContact } from "./controllers/contact.js";
 
 dotenv.config();
 
@@ -74,35 +74,31 @@ app.get('/auth', function (req, res) {
   res.send({ token, expire, signature, publicKey: process.env.IMAGEKIT_PUBLIC_KEY });
 });
 
-// api for booking appointment
+
 app.post("/api/appointment/book", authenticateJWT,
   authorizeRole("PATIENT"), postAppointment);
 
-// api for fetching appointments for a patient
-app.get("/api/appointment/patient/:patientId", authenticateJWT,
-  authorizeRole("PATIENT"), getPatientAppointments);
 
-// api for fetching appointments for a doctor
 app.get("/api/appointment/doctor/:doctorId", authenticateJWT,
   authorizeRole("DOCTOR"), getDoctorAppointments);
 
-// api for approving an appointment
 app.put("/api/appointment/approve/:id", authenticateJWT,
   authorizeRole("DOCTOR"), approveAppointment);
 
-// api for rejecting an appointment
 app.put("/api/appointment/reject/:id", authenticateJWT,
   authorizeRole("DOCTOR"), rejectAppointment);
 
-// api for creating a service
+app.get("/api/appointment/patient/:patientId", authenticateJWT,
+  authorizeRole("PATIENT"), getPatientAppointments);
+
+
 app.post("/api/services", authenticateJWT, authorizeRole("DOCTOR"), postSerivice);
 
-// api for fetching all services
 app.get("/api/services", getService);
 
 
 app.post("/api/contact", authenticateJWT, authorizeRole("PATIENT"),
-postContact);
+  postContact);
 
 app.get("/api/contact", getContact)
 

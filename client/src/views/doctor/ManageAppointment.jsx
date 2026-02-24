@@ -12,7 +12,6 @@ function ManageAppointment() {
 
   const doctorId = localStorage.getItem("userId");
 
-  // 🔹 Fetch doctor appointments
   const fetchAppointments = async () => {
     try {
       const res = await axios.get(
@@ -36,7 +35,6 @@ function ManageAppointment() {
     fetchAppointments();
   }, []);
 
-  // 🔹 Handle date & time input change
   const handleTimeChange = (id, field, value) => {
     setTimeData({
       ...timeData,
@@ -47,7 +45,6 @@ function ManageAppointment() {
     });
   };
 
-  // Approve Appointment
   const approveAppointment = async (id) => {
     try {
       const { appointmentDate, appointmentTime } = timeData[id] || {};
@@ -69,7 +66,6 @@ function ManageAppointment() {
     }
   };
 
-  //  Reject Appointment
   const rejectAppointment = async (id) => {
     try {
       await axios.put(
