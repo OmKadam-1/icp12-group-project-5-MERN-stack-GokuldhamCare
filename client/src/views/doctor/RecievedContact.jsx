@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import toast, { Toaster } from "react-hot-toast";
-import Footer from "../../components/Footer";
+import Footer from "../../components/FooterAdmin.jsx";
 
 function RecievdContact() {
   const [contact, setContact] = useState([]);
