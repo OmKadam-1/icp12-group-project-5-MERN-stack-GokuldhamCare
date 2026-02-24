@@ -15,7 +15,7 @@ function ManageAppointment() {
   const fetchAppointments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/appointment/doctor/${doctorId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointment/doctor/${doctorId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -50,7 +50,7 @@ function ManageAppointment() {
       const { appointmentDate, appointmentTime } = timeData[id] || {};
 
       await axios.put(
-        `http://localhost:8080/api/appointment/approve/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointment/approve/${id}`,
         { appointmentDate, appointmentTime },
         {
           headers: {
