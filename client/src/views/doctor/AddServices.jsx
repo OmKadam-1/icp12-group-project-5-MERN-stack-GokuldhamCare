@@ -13,7 +13,7 @@ import {
   upload,
 } from "@imagekit/react";
 import PhotoViewer from "../../components/PhotoViewer.jsx";
-import Footer from "../../components/Footer.jsx";
+import Footer from "../../components/FooterAdmin.jsx";
 import Servicelogo from "../../assets/servicelogo.png";
 
 function AddServices() {

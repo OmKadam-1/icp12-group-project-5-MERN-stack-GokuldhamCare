@@ -78,7 +78,6 @@ app.get('/auth', function (req, res) {
 app.post("/api/appointment/book", authenticateJWT,
   authorizeRole("PATIENT"), postAppointment);
 
-
 app.get("/api/appointment/doctor/:doctorId", authenticateJWT,
   authorizeRole("DOCTOR"), getDoctorAppointments);
 
