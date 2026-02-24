@@ -14,7 +14,7 @@ import {
 } from "@imagekit/react";
 import PhotoViewer from "../../components/PhotoViewer.jsx";
 import Footer from "../../components/Footer.jsx";
-
+import Servicelogo from "../../assets/servicelogo.png";
 
 function AddServices() {
   const [newService, setNewService] = useState({
@@ -129,82 +129,97 @@ function AddServices() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-slate-100 to-teal-50  min-h-screen    ">
       <NavbarAdmin />
-      <h1>Add new Service</h1>
 
-      <div className="w-80 block mx-auto mt-10">
-        <div className="flex gap-x-2">
-          {newService.serviceImg?.map((serviceImg, index) => (
-            <PhotoViewer
-              key={index}
-              imgUrl={serviceImg}
-              index={index}
-              onDelete={(url) => {
-                setNewService({
-                  ...newService,
-                  serviceImg: newService.serviceImg.filter(
-                    (serviceImg) => serviceImg !== url,
-                  ),
-                });
-              }}
-              showDelete
+      <div className="min-h-[640px] flex items-center justify-center    ">
+        <div className="w-full max-w-2xl   mx-auto p-6  min-h-[400px] shadow-xl   rounded-xl bg-white border border-green-300 flex flex-col items-center justify-center   ">
+          <p className="text-xl md:text-2xl  text-center mb-4  font-semibold flex flex-row items-center   ">
+            <img
+              src={Servicelogo}
+              alt="Add New Service"
+              className=" h-6 mt-1 mr-2 "
             />
-          ))}
+            Add new <span className="text-green-700 ml-2 ">Service</span>
+          </p>
+
+          <div className="flex gap-x-2">
+            {newService.serviceImg?.map((serviceImg, index) => (
+              <PhotoViewer
+                key={index}
+                imgUrl={serviceImg}
+                index={index}
+                onDelete={(url) => {
+                  setNewService({
+                    ...newService,
+                    serviceImg: newService.serviceImg.filter(
+                      (serviceImg) => serviceImg !== url,
+                    ),
+                  });
+                }}
+                showDelete
+              />
+            ))}
+          </div>
+          <Input
+            type="text"
+            placeholder="Enter Service Name"
+            value={newService.serviceName}
+            onChange={(e) => {
+              setNewService({
+                ...newService,
+                serviceName: e.target.value,
+              });
+            }}
+          />
+
+          <Input
+            type="text"
+            placeholder="Enter Department"
+            value={newService.department}
+            onChange={(e) => {
+              setNewService({
+                ...newService,
+                department: e.target.value,
+              });
+            }}
+          />
+          <Input
+            type="text"
+            placeholder="Enter Description"
+            value={newService.description}
+            onChange={(e) => {
+              setNewService({
+                ...newService,
+                description: e.target.value,
+              });
+            }}
+          />
+
+          <Input
+            type="file"
+            ref={fileInputRef}
+            onChange={(e) => {
+              if (e.target.files.length > 0) {
+                handleUpload();
+              }
+            }}
+          />
+          {progress > 0 ? `Uploading... ${progress}%` : null}
+
+          <div className="text-center mt-4">
+            <Button
+              title="Add Service"
+              size="medium"
+              variant="primary"
+              onClick={addService}
+            />
+          </div>
         </div>
-        <Input
-          type="text"
-          placeholder="Enter Service Name"
-          value={newService.serviceName}
-          onChange={(e) => {
-            setNewService({
-              ...newService,
-              serviceName: e.target.value,
-            });
-          }}
-        />
-
-        <Input
-          type="text"
-          placeholder="Enter Department"
-          value={newService.department}
-          onChange={(e) => {
-            setNewService({
-              ...newService,
-              department: e.target.value,
-            });
-          }}
-        />
-        <Input
-          type="text"
-          placeholder="Enter Description"
-          value={newService.description}
-          onChange={(e) => {
-            setNewService({
-              ...newService,
-              description: e.target.value,
-            });
-          }}
-        />
-
-        <Input
-          type="file"
-          ref={fileInputRef}
-          onChange={(e) => {
-            if (e.target.files.length > 0) {
-              handleUpload();
-            }
-          }}
-        />
-        {progress > 0 ? `Uploading... ${progress}%` : null}
       </div>
 
-      <div className="w-80 block mx-auto mt-10">
-        <Button title="Add Service" onClick={addService} />
-      </div>
       <Toaster />
-             <Footer />
-
+      <Footer />
     </div>
   );
 }

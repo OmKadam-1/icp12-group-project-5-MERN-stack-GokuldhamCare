@@ -4,15 +4,14 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import toast, { Toaster } from "react-hot-toast";
-
+import Footer from "../../components/Footer";
 
 function ManageAppointment() {
   const [appointments, setAppointments] = useState([]);
   const [timeData, setTimeData] = useState({});
-  
+
   const doctorId = localStorage.getItem("userId");
 
-  // 🔹 Fetch doctor appointments
   const fetchAppointments = async () => {
     try {
       const res = await axios.get(
@@ -21,7 +20,7 @@ function ManageAppointment() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       if (res.data.success) {
@@ -36,7 +35,6 @@ function ManageAppointment() {
     fetchAppointments();
   }, []);
 
-  // 🔹 Handle date & time input change
   const handleTimeChange = (id, field, value) => {
     setTimeData({
       ...timeData,
@@ -47,7 +45,6 @@ function ManageAppointment() {
     });
   };
 
-  // Approve Appointment
   const approveAppointment = async (id) => {
     try {
       const { appointmentDate, appointmentTime } = timeData[id] || {};
@@ -59,7 +56,7 @@ function ManageAppointment() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       toast.success("Appointment Approved ");
@@ -69,7 +66,6 @@ function ManageAppointment() {
     }
   };
 
-  //  Reject Appointment
   const rejectAppointment = async (id) => {
     try {
       await axios.put(
@@ -79,7 +75,7 @@ function ManageAppointment() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       toast.error("Appointment Rejected ");
@@ -90,23 +86,35 @@ function ManageAppointment() {
   };
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-slate-100 to-teal-50   min-h-screen ">
       <NavbarAdmin />
 
-      <div className="p-6">
-        <h2 className="text-xl font-bold mb-4"> Manage Appointments</h2>
+      <div className="p-6 ">
+        <h2 className="text-xl text-center font-semibold  mb-4"> Manage Appointments</h2>
 
         {appointments.map((app) => (
           <div
             key={app._id}
-            className="bg-white shadow p-4 mb-4 rounded border"
+            className="bg-[#e6f4ef]  shadow  p-4 mb-4  rounded border"
           >
-            <p><b>Patient:</b> {app.patientName}</p>
-            <p><b>Email:</b> {app.email}</p>
-            <p><b>Phone:</b> {app.phone}</p>
-            <p><b>Problem:</b> {app.problem}</p>
-            <p><b>Address:</b> {app.address}</p>
-            <p><b>Status:</b> {app.status}</p>
+            <p>
+              <b>Patient:</b> {app.patientName}
+            </p>
+            <p>
+              <b>Email:</b> {app.email}
+            </p>
+            <p>
+              <b>Phone:</b> {app.phone}
+            </p>
+            <p>
+              <b>Problem:</b> {app.problem}
+            </p>
+            <p>
+              <b>Address:</b> {app.address}
+            </p>
+            <p>
+              <b>Status:</b> {app.status}
+            </p>
 
             <Input
               type="date"
@@ -142,7 +150,8 @@ function ManageAppointment() {
           </div>
         ))}
       </div>
-      <Toaster/>
+      <Toaster />
+      <Footer />
     </div>
   );
 }
