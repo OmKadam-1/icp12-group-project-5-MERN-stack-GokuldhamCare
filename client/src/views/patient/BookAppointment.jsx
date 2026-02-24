@@ -41,6 +41,7 @@ function BookAppointment() {
 
       if (res.data.success) {
         toast.success(res.data.message);
+        
 
         setForm({
           patientName: "",
@@ -51,6 +52,7 @@ function BookAppointment() {
         });
       } else {
         toast.error(res.data.message);
+        
       }
     } catch (error) {
       console.error(error); 
@@ -126,7 +128,7 @@ function BookAppointment() {
         </div>
       </div>
 
-      <Toaster position="top" />
+      <Toaster />
 
       <Footer />
     </div>

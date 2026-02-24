@@ -27,7 +27,7 @@ function MyAppointment() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      <h2 className="text-xl font-bold mb-4">📅 My Appointments</h2>
+      <h2 className="text-xl font-bold mb-4"> My Appointments</h2>
 
       {appointments.length === 0 && (
         <p className="text-gray-500">No appointments found</p>

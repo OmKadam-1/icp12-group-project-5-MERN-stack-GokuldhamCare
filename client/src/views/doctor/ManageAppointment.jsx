@@ -4,6 +4,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import toast, { Toaster } from "react-hot-toast";
+import Footer from "../../components/Footer";
 
 
 function ManageAppointment() {
@@ -90,16 +91,17 @@ function ManageAppointment() {
   };
 
   return (
-    <div>
+       <div className="bg-gradient-to-r from-slate-100 to-teal-50   min-h-screen ">
+
       <NavbarAdmin />
 
-      <div className="p-6">
+      <div className="p-6 ">
         <h2 className="text-xl font-bold mb-4"> Manage Appointments</h2>
 
         {appointments.map((app) => (
           <div
             key={app._id}
-            className="bg-white shadow p-4 mb-4 rounded border"
+            className="bg-[#e6f4ef]  shadow  p-4 mb-4  rounded border"
           >
             <p><b>Patient:</b> {app.patientName}</p>
             <p><b>Email:</b> {app.email}</p>
@@ -143,6 +145,7 @@ function ManageAppointment() {
         ))}
       </div>
       <Toaster/>
+      <Footer/>
     </div>
   );
 }

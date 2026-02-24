@@ -33,8 +33,8 @@ function Contact() {
 
       console.log(response.data);
 
-      if (res.data.success) {
-        toast.success(res.data.message);
+      if (response.data.success) {
+        toast.success(response.data.message);
 
         setForm({
           name: "",
@@ -44,7 +44,7 @@ function Contact() {
           message: "",
         });
       } else {
-        toast.error(res.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
       console.error(error);
@@ -153,6 +153,7 @@ function Contact() {
           </div>
         </div>
       </div>
+      <Toaster/>
       <Footer />
     </div>
   );
