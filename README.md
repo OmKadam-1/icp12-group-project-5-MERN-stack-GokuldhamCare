@@ -12,13 +12,13 @@ Click Here to visit our website [Click Here](https://icp12-group-project-5-mern-
 
 ## Preview
 - Home Page
-![Home page](client/src/assets/home-page.jpeg)
+![Home page](client/src/assets/homepage.jpeg)
 
 - Dashboard Image
 ![Dashboard](client/src/assets/dashboard.jpeg)
 
 - Appointment Page
-![Appointment](client/src/assets/appointment-page.jpeg) 
+![Appointment](client/src/assets/appointmentpage.jpeg) 
 
 ---
 
@@ -99,28 +99,11 @@ npm start
 
 # Folder Structure
 
-- `client/` - Frontend files
+![Folder-Structure](client/src/assets/folder-structure.png)
 
-- `client/scr/assets` - Images Folder
+---
+# Contributors 
 
-- `client/scr/components` - Component Folder where the we files which can be used in any page 
-
-- `client/scr/config` -  config folder where we can add new data for the frontend
-
-- `client/scr/view` - Pages files
-
-- `client/scr/view/auth` - Authentication page like LogIn or SignUp
-
-- `client/scr/view/doctor` - Pages designed for Doctor
-
-- `client/scr/view/doctor` - Pages designed for Doctor
-- `client/scr/view/patient` - Pages designed for Patient
-
-- `server/` - Backend files
-
-- `server/controller` - Controller folder
-
-- `server/middlewaresr` - Middlewares folder
-
-- `server/models` - Models folder to store data in database
-
+<a href="https://github.com/OmKadam-1/icp12-group-project-5-MERN-stack-HealthMatrix/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=OmKadam-1/icp12-group-project-5-MERN-stack-HealthMatrix" />
+</a>
