@@ -1,6 +1,7 @@
 import React from 'react'
 import NavbarAdmin from '../../components/NavbarAdmin'
 import Logo from "../../assets/logo.png";
+import FooterAdmin from '../../components/FooterAdmin';
 
 function DoctorDashboard() {
   return (
@@ -56,7 +57,7 @@ function DoctorDashboard() {
         </div>
 
       </div>
-
+        <FooterAdmin />
     </div>
   );
 };
