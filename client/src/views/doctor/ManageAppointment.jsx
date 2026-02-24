@@ -4,7 +4,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import toast, { Toaster } from "react-hot-toast";
-import Footer from "../../components/Footer";
+import Footer from "../../components/FooterAdmin.jsx";
 
 function ManageAppointment() {
   const [appointments, setAppointments] = useState([]);
