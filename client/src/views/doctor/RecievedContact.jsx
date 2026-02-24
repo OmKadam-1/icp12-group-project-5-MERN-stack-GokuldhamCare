@@ -27,16 +27,15 @@ function RecievdContact() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-slate-100 to-teal-50   min-h-screen ">
       <NavbarAdmin />
+      <p className="text-xl md:text-2xl  font-semibold text-center mb-4 mt-4">Patient Messages <span className="text-green-700">Inbox</span></p>
 
-      <div className="p-6">
-        <h2 className="text-xl font-bold mb-4">📋 Manage Appointments</h2>
-
+      <div className="p-6 flex flex-wrap   gap-9 justify-center ">
         {contact.map((cont) => (
           <div
             key={cont._id}
-            className="bg-white shadow p-4 mb-4 rounded border"
+            className=" sm:w-[600px] bg-[#e6f4ef]  shadow-lg p-4 mb-4 rounded border"
           >
             <p>
               <b>Name:</b> {cont.name}
@@ -57,8 +56,7 @@ function RecievdContact() {
         ))}
       </div>
       <Toaster />
-             <Footer />
-
+      <Footer />
     </div>
   );
 }
