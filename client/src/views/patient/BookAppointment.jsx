@@ -7,6 +7,9 @@ import NavbarPatient from "../../components/NavbarPatient";
 import { setPageTitle } from "../../utils";
 import Footer from "../../components/Footer";
 import Appointment from "../../assets/appointment.png";
+import MyAppointments from "../../assets/myappointment.png";
+import { Link } from "react-router";
+
 
 function BookAppointment() {
   const [form, setForm] = useState({
@@ -63,6 +66,14 @@ function BookAppointment() {
   return (
     <div className="bg-gradient-to-r from-slate-100 to-teal-50  min-h-screen    ">
       <NavbarPatient />
+
+         <Link to="/patient/my-appointments">
+          <img
+            src={MyAppointments}
+            alt="MyAppointments"
+            className="fixed top-30 right-10 h-10 cursor-pointer"
+          />
+        </Link>
 
       <div className="min-h-[640px] flex items-center justify-center    ">
         <div className="w-full max-w-2xl   mx-auto p-6  min-h-[400px] shadow-xl   rounded-xl bg-white border border-green-300 flex flex-col items-center justify-center   ">
@@ -121,7 +132,7 @@ function BookAppointment() {
               title="Book Appointment"
               size="medium"
               variant="primary"
-              onClick={addAppointment}
+              onClick={addAppointment} 
             />
           </div>
           

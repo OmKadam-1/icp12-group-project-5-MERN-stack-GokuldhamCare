@@ -6,11 +6,10 @@ import NavbarAdmin from "../../components/NavbarAdmin";
 import toast, { Toaster } from "react-hot-toast";
 import Footer from "../../components/Footer";
 
-
 function ManageAppointment() {
   const [appointments, setAppointments] = useState([]);
   const [timeData, setTimeData] = useState({});
-  
+
   const doctorId = localStorage.getItem("userId");
 
   // 🔹 Fetch doctor appointments
@@ -22,7 +21,7 @@ function ManageAppointment() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       if (res.data.success) {
@@ -60,7 +59,7 @@ function ManageAppointment() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       toast.success("Appointment Approved ");
@@ -80,7 +79,7 @@ function ManageAppointment() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       toast.error("Appointment Rejected ");
@@ -91,24 +90,35 @@ function ManageAppointment() {
   };
 
   return (
-       <div className="bg-gradient-to-r from-slate-100 to-teal-50   min-h-screen ">
-
+    <div className="bg-gradient-to-r from-slate-100 to-teal-50   min-h-screen ">
       <NavbarAdmin />
 
       <div className="p-6 ">
-        <h2 className="text-xl font-bold mb-4"> Manage Appointments</h2>
+        <h2 className="text-xl text-center font-semibold  mb-4"> Manage Appointments</h2>
 
         {appointments.map((app) => (
           <div
             key={app._id}
             className="bg-[#e6f4ef]  shadow  p-4 mb-4  rounded border"
           >
-            <p><b>Patient:</b> {app.patientName}</p>
-            <p><b>Email:</b> {app.email}</p>
-            <p><b>Phone:</b> {app.phone}</p>
-            <p><b>Problem:</b> {app.problem}</p>
-            <p><b>Address:</b> {app.address}</p>
-            <p><b>Status:</b> {app.status}</p>
+            <p>
+              <b>Patient:</b> {app.patientName}
+            </p>
+            <p>
+              <b>Email:</b> {app.email}
+            </p>
+            <p>
+              <b>Phone:</b> {app.phone}
+            </p>
+            <p>
+              <b>Problem:</b> {app.problem}
+            </p>
+            <p>
+              <b>Address:</b> {app.address}
+            </p>
+            <p>
+              <b>Status:</b> {app.status}
+            </p>
 
             <Input
               type="date"
@@ -144,8 +154,8 @@ function ManageAppointment() {
           </div>
         ))}
       </div>
-      <Toaster/>
-      <Footer/>
+      <Toaster />
+      <Footer />
     </div>
   );
 }
