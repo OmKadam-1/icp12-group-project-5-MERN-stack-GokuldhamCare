@@ -24,21 +24,22 @@ function PhotoPreview({ imgUrl, show, onClose }) {
 function PhotoViewer({ imgUrl, index, onDelete, showDelete = false }) {
   const [showPreview, setShowPreview] = useState(false);
   return (
-    <div >
-      <img
-        key={index}
-        src={imgUrl}
-        alt={`Tour Photo ${index + 1}`}
-        className="w-full h-[220px] rounded-t-2xl object-cover cursor-pointer"
-        onClick={() => setShowPreview(true)}
-      />
+   <div className="relative w-full">
+  <img
+    key={index}
+    src={imgUrl}
+    alt={`Tour Photo ${index + 1}`}
+    className="w-full h-[220px] rounded-t-2xl object-cover cursor-pointer"
+    onClick={() => setShowPreview(true)}
+  />
 
-      {showDelete ? (
-        <Trash2
-          className="absolute right-2 top-2 h-4 w-4 text-red-500 cursor-pointer"
-          onClick={() => onDelete(imgUrl)}
-        />
-      ) : null}
+  {showDelete && (
+    <Trash2
+      className="absolute top-3 right-3 h-5 w-5 text-red-500 cursor-pointer bg-white rounded-full p-1 shadow-md hover:scale-110 transition"
+      onClick={() => onDelete(imgUrl)}
+    />
+  )}
+
 
       <PhotoPreview
         imgUrl={imgUrl}
