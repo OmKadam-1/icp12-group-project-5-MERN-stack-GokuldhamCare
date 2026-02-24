@@ -1,7 +1,7 @@
-import doctor1 from "../assets/doctor1.jpg";
-import doctor2 from "../assets/doctor2.jpg";
-import doctor3 from "../assets/doctor3.jpg";
-import doctor4 from "../assets/doctor4.jpg";
+import doctoraarav from "../assets/doctoraarav.jpg";
+import doctorsrushti from "../assets/doctorsrushti.jpg";
+import doctorriddhi from "../assets/doctorriddhi.jpg";
+import doctorrohan from "../assets/doctorrohan.jpg";
 
 const doctors = [
   {
@@ -9,7 +9,7 @@ const doctors = [
     name: "Dr. Aarav Sharma",
     speciality: "Neurologist",
     experience: "3 years Experience",
-    image: doctor1,
+    image: doctoraarav,
     description:
       "Expert in diagnosing and treating brain and nervous system disorders.",
   },
@@ -18,7 +18,7 @@ const doctors = [
     name: "Dr. Srushti Patel",
     speciality: "Cardiologist",
     experience: "12 years Experience",
-    image: doctor2,
+    image: doctorsrushti,
     description:
       "Specialist in heart diseases, preventive care, and cardiac health management.",
   },
@@ -27,7 +27,7 @@ const doctors = [
     name: "Dr. Riddhi Verma",
     speciality: "Dermatologist",
     experience: "5 years Experience",
-    image: doctor3,
+    image: doctorriddhi,
     description:
       "Provides advanced treatment for skin, hair, and cosmetic concerns.",
   },
@@ -36,7 +36,7 @@ const doctors = [
     name: "Dr. Rohan Mehta",
     speciality: "General Physician",
     experience: "35 years Experience",
-    image: doctor4,
+    image: doctorrohan,
     description:
       "Experienced in diagnosing and managing a wide range of medical conditions.",
   },

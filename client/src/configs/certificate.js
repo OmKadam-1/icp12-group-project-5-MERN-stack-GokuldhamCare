@@ -1,40 +1,40 @@
-import certificate1 from "../assets/certificate1.png";
-import certificate2 from "../assets/certificate2.svg";
-import certificate3 from "../assets/certificate3.svg";
-import certificate4 from "../assets/certificate4.png";
-import certificate5 from "../assets/certificate5.png";
-import certificate6 from "../assets/certificate6.png";
+import medicalcertificate from "../assets/medicalcertificate.png";
+import ministrycertificate from "../assets/ministrycertificate.svg";
+import councilcertificate from "../assets/councilcertificate.svg";
+import nabhcertificate from "../assets/nabhcertificate.png";
+import governmentcertificate from "../assets/governmentcertificate.png";
+import qualitycertificate from "../assets/qualitycertificate.png";
 
 const certificates = [
   {
     id: 1,
     name: "Medical Commission",
-    image: certificate1,
+    image: medicalcertificate,
   },
   {
     id: 2,
     name: "Ministry of Health",
-    image: certificate2,
+    image: ministrycertificate,
   },
   {
     id: 3,
     name: "Medical Council",
-    image: certificate3,
+    image: councilcertificate,
   },
   {
     id: 4,
     name: "NABH Accredited",
-    image: certificate4,
+    image: nabhcertificate,
   },
   {
     id: 5,
     name: "Government Approved",
-    image: certificate5,
+    image: governmentcertificate,
   },
   {
     id: 6,
     name: "Quality Healthcare",
-    image: certificate6,
+    image: qualitycertificate,
   },
 ];
 
