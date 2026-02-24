@@ -69,7 +69,7 @@ function ManageAppointment() {
   const rejectAppointment = async (id) => {
     try {
       await axios.put(
-        `http://localhost:8080/api/appointment/reject/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointment/reject/${id}`,
         {},
         {
           headers: {

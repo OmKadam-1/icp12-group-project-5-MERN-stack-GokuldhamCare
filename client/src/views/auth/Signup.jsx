@@ -27,7 +27,7 @@ function Signup() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:8080/api/auth/register", form);
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, form);
 
       toast.success("Registration Successful ");
 
