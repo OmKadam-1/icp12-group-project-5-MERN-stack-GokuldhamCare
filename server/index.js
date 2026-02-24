@@ -7,7 +7,7 @@ import ImageKit from "@imagekit/nodejs";
 import bcrypt from "bcryptjs";
 import { registerPatient, loginUser } from "./controllers/authController.js";
 import { postAppointment, getPatientAppointments, getDoctorAppointments, approveAppointment, rejectAppointment } from "./controllers/appointment.js";
-import { authenticateJWT, authorizeRole } from "./middlewares/authMiddleware.js";
+import { authenticateJWT, authorizeRole } from "./middlewares/auth.js";
 import Service from "./models/Service.js";
 import Contact from "./models/Contact.js";
 import { postSerivice, getService } from "./controllers/services.js";
