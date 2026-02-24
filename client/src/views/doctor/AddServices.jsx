@@ -123,7 +123,7 @@ function AddServices() {
       toast.success(response.data.message);
 
       setTimeout(() => {
-        navigate("/login");
+        navigate("/service/allservice");
       }, 1000);
     } else {
       toast.error(response.data.message);
