@@ -12,7 +12,7 @@ import Image from "../assets/doctorteam.png";
 
 const HeroSection = () => {
     return (
-        <div className="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+        <div className="bg-gray-100 min-h-screen flex items-start justify-center  pt-10 p-4">
             <div className="bg-white rounded-3xl shadow-xl w-full max-w-5xl p-8 md:p-12 ">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div>

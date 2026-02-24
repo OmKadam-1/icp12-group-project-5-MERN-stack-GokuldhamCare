@@ -54,10 +54,9 @@ const NavbarAdmin = () => {
                 key={index}
                 to={item.path}
                 className={`flex flex-col items-center text-xs font-medium transition
-                  ${
-                    isActive
-                      ? "text-green-600"
-                      : "text-gray-600 hover:text-green-600"
+                  ${isActive
+                    ? "text-green-600"
+                    : "text-gray-600 hover:text-green-600"
                   }
                 `}
               >
@@ -99,10 +98,9 @@ const NavbarAdmin = () => {
                 to={item.path}
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center gap-3 font-medium transition
-                  ${
-                    isActive
-                      ? "text-green-600"
-                      : "text-gray-700 hover:text-green-600"
+                  ${isActive
+                    ? "text-green-600"
+                    : "text-gray-700 hover:text-green-600"
                   }
                 `}
               >
