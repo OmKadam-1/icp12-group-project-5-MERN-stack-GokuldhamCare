@@ -4,7 +4,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import toast, { Toaster } from "react-hot-toast";
-import Footer from "../../components/Footer";
+import Footer from "../../components/FooterAdmin.jsx";
 
 function ManageAppointment() {
   const [appointments, setAppointments] = useState([]);
@@ -15,7 +15,7 @@ function ManageAppointment() {
   const fetchAppointments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/appointment/doctor/${doctorId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointment/doctor/${doctorId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -50,7 +50,7 @@ function ManageAppointment() {
       const { appointmentDate, appointmentTime } = timeData[id] || {};
 
       await axios.put(
-        `http://localhost:8080/api/appointment/approve/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointment/approve/${id}`,
         { appointmentDate, appointmentTime },
         {
           headers: {
@@ -69,7 +69,7 @@ function ManageAppointment() {
   const rejectAppointment = async (id) => {
     try {
       await axios.put(
-        `http://localhost:8080/api/appointment/reject/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointment/reject/${id}`,
         {},
         {
           headers: {

@@ -3,6 +3,8 @@ import { setPageTitle, getUserJwtToken } from "../../utils";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import Button from "../../components/Button.jsx";
 import Input from "../../components/Input";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import {
@@ -13,7 +15,7 @@ import {
   upload,
 } from "@imagekit/react";
 import PhotoViewer from "../../components/PhotoViewer.jsx";
-import Footer from "../../components/Footer.jsx";
+import Footer from "../../components/FooterAdmin.jsx";
 import Servicelogo from "../../assets/servicelogo.png";
 
 function AddServices() {
@@ -31,7 +33,7 @@ function AddServices() {
   const authenticator = async () => {
     try {
       // Perform the request to the upload authentication endpoint.
-      const response = await fetch("http://localhost:8080/auth");
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth`);
       if (!response.ok) {
         // If the server response is not successful, extract the error text for debugging.
         const errorText = await response.text();
@@ -108,7 +110,7 @@ function AddServices() {
 
   const addService = async () => {
     const response = await axios.post(
-      "http://localhost:8080/api/services",
+      `${import.meta.env.VITE_API_BASE_URL}/api/services`,
       newService,
       {
         headers: {
@@ -119,6 +121,10 @@ function AddServices() {
     console.log(response.data);
     if (response.data.success) {
       toast.success(response.data.message);
+
+      setTimeout(() => {
+        navigate("/service/allservice");
+      }, 1000);
     } else {
       toast.error(response.data.message);
     }

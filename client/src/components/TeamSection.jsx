@@ -1,5 +1,5 @@
 import { MedalIcon } from "lucide-react";
-import doctors from "../configs/Doctors";
+import doctors from "../configs/doctors";
 const TeamSection = () => {
   return (
     <section className="py-20 bg-gradient-to-r from-slate-100 to-teal-50">

@@ -22,7 +22,7 @@ function Contact() {
   const sendMessage = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/contact",
+        `${import.meta.env.VITE_API_BASE_URL}/api/contact`,
         form,
         {
           headers: {

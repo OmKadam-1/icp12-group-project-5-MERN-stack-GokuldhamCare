@@ -30,7 +30,7 @@ function BookAppointment() {
   const addAppointment = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/appointment/book",
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointment/book`,
         form,
         {
           headers: {

@@ -12,7 +12,7 @@ function MyAppointment() {
   const fetchAppointments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/appointment/patient/${patientId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointment/patient/${patientId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

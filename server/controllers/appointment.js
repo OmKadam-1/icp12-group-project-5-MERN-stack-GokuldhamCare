@@ -1,7 +1,7 @@
 import Appointment from "../models/Appointments.js";
 import User from "../models/User.js";
 
-import dotenv from "dotenv";
+import dotenv from "dotenv"; 
 dotenv.config();
 
 const postAppointment = async (req, res) => {
@@ -13,7 +13,7 @@ const postAppointment = async (req, res) => {
 
     const newAppointment = new Appointment({
       patientName: req.body.patientName,
-      patientId: req.user.id,   // ✅ from JWT
+      patientId: req.user.id,     
       doctorId: doctor._id,     
       email: req.body.email,
       phone: req.body.phone,

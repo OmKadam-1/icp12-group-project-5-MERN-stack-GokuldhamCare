@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import toast, { Toaster } from "react-hot-toast";
-import Footer from "../../components/Footer";
+import Footer from "../../components/FooterAdmin.jsx";
 
 function RecievdContact() {
   const [contact, setContact] = useState([]);
 
   const fetchContact = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/contact");
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/contact`);
 
       if (response.data.success) {
         toast.success(response.data.message);

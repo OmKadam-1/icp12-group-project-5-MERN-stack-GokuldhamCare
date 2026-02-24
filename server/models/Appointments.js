@@ -6,7 +6,7 @@ const appointmentSchema = new mongoose.Schema({
     patientId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     doctorId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 
-    email: String,
+    email: String,  
     phone: String,
 
     problem: String,
@@ -20,7 +20,7 @@ const appointmentSchema = new mongoose.Schema({
         default: "pending",
     },
 
-    appointmentDate: Date,
+    appointmentDate: Date, 
     appointmentTime: String,
 } ,  { timestamps: true });
 

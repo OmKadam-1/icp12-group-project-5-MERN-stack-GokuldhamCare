@@ -5,14 +5,14 @@ import addService from "../../assets/addService.png";
 import { Link } from "react-router";
 import ServiceCard from "../../components/ServiceCard";
 import NavbarAdmin from "../../components/NavbarAdmin.jsx";
-import Footer from "../../components/Footer.jsx";
+import Footer from "../../components/FooterAdmin.jsx";
 
 function AllServices() {
   const [services, setServices] = useState([]);
 
   const fetchServices = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/services");
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/services`);
 
       if (response.data.success) {
         toast.success(response.data.message);
