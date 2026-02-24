@@ -3,6 +3,8 @@ import { setPageTitle, getUserJwtToken } from "../../utils";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import Button from "../../components/Button.jsx";
 import Input from "../../components/Input";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import {
@@ -119,6 +121,10 @@ function AddServices() {
     console.log(response.data);
     if (response.data.success) {
       toast.success(response.data.message);
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
     } else {
       toast.error(response.data.message);
     }
