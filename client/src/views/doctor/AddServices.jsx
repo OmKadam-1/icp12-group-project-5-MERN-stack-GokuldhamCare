@@ -108,7 +108,7 @@ function AddServices() {
 
   const addService = async () => {
     const response = await axios.post(
-      "http://localhost:8080/api/services",
+      `${import.meta.env.VITE_API_BASE_URL}/api/services`,
       newService,
       {
         headers: {
